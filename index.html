@@ -179,7 +179,7 @@ p{margin:0}
 }
 
 /* pierwsza lekcja */
-.steps-sec{background:var(--bg-2)}
+.steps-sec{background:var(--bg)}
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--fg);counter-reset:step}
 .step{padding:28px 32px 8px 0;display:flex;flex-direction:column;gap:12px;min-width:0;counter-increment:step}
 .step + .step{padding-left:32px;border-left:1px solid var(--line)}
@@ -263,6 +263,56 @@ p{margin:0}
 @keyframes poIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){.picker-out.swap > *{animation:none}}
 @media (max-width:860px){.picker{grid-template-columns:minmax(0,1fr)}.picker-left,.picker-out{padding:24px 20px}}
+
+/* zespół */
+.coach .wrap.team{display:block;padding-block:96px}
+.team-head{display:flex;flex-direction:column;gap:10px;margin-bottom:40px;max-width:44em}
+.team-head .label{color:var(--deep-muted)}
+.team-head h2{font-size:var(--fs-2);line-height:.95}
+.team-head p{color:var(--deep-muted);font-size:var(--fs-1);line-height:1.5}
+.team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+.tcard{display:flex;flex-direction:column;border:1px solid var(--deep-line);border-radius:8px;overflow:hidden;background:var(--deep-card);min-width:0}
+.tphoto{margin:0;aspect-ratio:5/4;overflow:hidden;background:var(--deep-2)}
+.tphoto img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tcard:hover .tphoto img{transform:scale(1.03)}
+.tbody{padding:28px;display:flex;flex-direction:column;gap:14px;flex:1}
+.tbody .label{color:var(--deep-muted)}
+.tbody h3{font-size:clamp(2rem,3.4vw,2.7rem);line-height:.95}
+.tbody p{color:var(--deep-fg);opacity:.86}
+.tbody .tfor{opacity:1;color:var(--deep-muted);font-size:.92rem}
+.tbody .btn{margin-top:auto;align-self:flex-start}
+.podium-band{margin:24px 0 0;display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:28px;align-items:center;border:1px solid var(--deep-line);border-radius:8px;padding:20px 28px 20px 20px;background:var(--deep-card)}
+.podium-band img{display:block;width:100%;height:auto;border-radius:4px}
+.podium-band figcaption{display:flex;flex-direction:column;gap:10px;min-width:0}
+.podium-band .label{color:var(--deep-muted)}
+.podium-band q{font-size:var(--fs-1);line-height:1.45;quotes:"„" "”"}
+.podium-band .who{font-size:.88rem;color:var(--deep-muted)}
+@media (max-width:860px){
+  .coach .wrap.team{padding-block:64px}
+  .team-grid{grid-template-columns:minmax(0,1fr)}
+  .tbody{padding:22px 20px}
+  .podium-band{grid-template-columns:minmax(0,96px) minmax(0,1fr);gap:16px;padding:14px}
+  .podium-band q{font-size:1rem}
+}
+.race-stats{margin-bottom:28px;border-top-color:var(--line)}
+.race-stats .stat{border-bottom-color:var(--line)}
+.race-stats .stat:nth-child(odd){border-right-color:var(--line)}
+.race-stats .stat span{color:var(--muted)}
+.race-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+.race-stats .stat,.race-stats .stat:nth-child(even){padding:22px 20px 22px 0;border-right:1px solid var(--line)}
+.race-stats .stat + .stat{padding-left:20px}
+.race-stats .stat:last-child{border-right:0}
+.honors.race-honors{color:var(--muted);margin:0 0 32px}
+.honors.race-honors b{color:var(--fg)}
+@media (max-width:900px){
+  .race-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .race-stats .stat:nth-child(2){border-right:0}
+  .race-stats .stat:nth-child(3){padding-left:0}
+}
+@media (max-width:460px){
+  .race-stats{grid-template-columns:minmax(0,1fr)}
+  .race-stats .stat,.race-stats .stat + .stat{padding:18px 0;border-right:0}
+}
 
 /* trenerzy: dodatki */
 .honors{margin:0;font-size:.9rem;line-height:1.55;color:var(--deep-muted);max-width:40em}
@@ -380,7 +430,8 @@ details p{padding:0 48px 22px 0;color:var(--muted)}
 .contact .k{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--deep-muted)}
 .contact .v{font-size:1.1rem;overflow-wrap:anywhere}
 .contact a{color:var(--deep-fg)}
-.coaches{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px}
+.coaches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.coach-card{background:var(--deep-card)}
 .coach-card{display:flex;flex-direction:column;gap:12px;padding:30px;border:1px solid var(--deep-line);border-radius:4px;min-width:0}
 .coach-card.main{background:var(--deep-card)}
 .coach-card .k{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--deep-muted)}
@@ -412,7 +463,7 @@ footer a:hover{color:var(--deep-fg)}
       <a class="l" href="#trenerzy">Trenerzy</a>
       <a class="l" href="#opinie">Opinie</a>
       <a class="l" href="#cennik">Cennik</a>
-      <a class="btn btn-navy btn-sm" href="#rezerwacja">Zarezerwuj</a>
+      <a class="btn btn-navy btn-sm" href="#trenerzy">Zarezerwuj</a>
     </nav>
   </div>
 </header>
@@ -426,7 +477,7 @@ footer a:hover{color:var(--deep-fg)}
       <h1 class="cond">Lekcje pływania dla dzieci, dorosłych i <em>triathlonistów</em></h1>
       <p class="lede">Zajęcia indywidualne, jeden na jeden, na każdym poziomie. Od pierwszego wejścia do wody po ekonomiczny kraul na start w triathlonie.</p>
       <div class="cta">
-        <a class="btn btn-accent" href="https://calendar.app.google/zg8dq89M7FT8zJiC8" target="_blank" rel="noopener">Zarezerwuj termin
+        <a class="btn btn-accent" href="#trenerzy">Zarezerwuj lekcję
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
         </a>
         <a class="btn btn-line" href="#cennik">Cennik</a>
@@ -434,8 +485,8 @@ footer a:hover{color:var(--deep-fg)}
       <p class="trust">Sportowiec Roku 2025 w powiecie pszczyńskim · Instruktor sportu – pływanie · Ratownik wodny WOPR</p>
       <div class="facts">
         <div><b>140 zł</b><span>lekcja 60 min</span></div>
-        <div><b>650 zł</b><span>pakiet 5 lekcji</span></div>
-        <div><b>25 m</b><span>basen sportowy Goczuś</span></div>
+        <div><b>5,0 ★</b><span>9 opinii w Google</span></div>
+        <div><b>1:1</b><span>dwóch instruktorów</span></div>
       </div>
       </div>
       <figure class="hero-photo"><img src="img/hero-podwodne.jpg" alt="Jakub Nachyła płynie kraulem pod wodą wzdłuż toru basenu" width="800" height="1000" fetchpriority="high"></figure>
@@ -493,10 +544,10 @@ footer a:hover{color:var(--deep-fg)}
           <h4>Nauka pływania od podstaw</h4>
           <p>Od pierwszego wejścia do wody do swobodnego pływania. Bez grupy, w Twoim tempie i bez oceniania.</p>
           <p class="po-price">140 zł / 60 min · pakiet 5 lekcji 650 zł</p>
-          <p class="po-who">Poprowadzi Jakub albo Kuba. Wybierz, czyj termin Ci pasuje.</p>
+          <p class="po-who">Poprowadzi Jakub albo Kuba: ta sama cena i te same zasady.</p>
           <div class="po-cta">
             <a class="btn btn-accent" href="https://calendar.app.google/zg8dq89M7FT8zJiC8" target="_blank" rel="noopener">Termin u Jakuba <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
-            <a class="btn btn-line" href="https://calendar.app.google/SPsvB2McYiCYPJ649" target="_blank" rel="noopener">Termin u Kuby</a>
+            <a class="btn btn-accent" href="https://calendar.app.google/SPsvB2McYiCYPJ649" target="_blank" rel="noopener">Termin u Kuby <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
           </div>
         </div>
       </div>
@@ -505,85 +556,44 @@ footer a:hover{color:var(--deep-fg)}
 
   <section class="water coach" id="trenerzy">
     <canvas data-water="coach" aria-hidden="true"></canvas>
-    <div class="wrap coach-main">
-      <figure class="portrait"><img src="img/trener-jakub.jpg" alt="Jakub Nachyła w koszulce Woda &amp; Fitness na krytej pływalni" width="800" height="1000" loading="lazy"></figure>
-      <div class="coach-side">
-      <div class="coach-copy">
-        <p class="label">Trenerzy · Założyciel Woda &amp; Fitness</p>
-        <h2 class="cond">Jakub Nachyła</h2>
-        <ul class="creds" aria-label="Uprawnienia">
-          <li>Instruktor sportu – pływanie</li><li>Ratownik wodny WOPR</li><li>Płetwonurek SDI Open Water</li><li>Sternik motorowodny</li><li>Instruktor narciarstwa</li><li>Strażak</li>
-        </ul>
-        <p class="bio">Woda &amp; Fitness to mój projekt życiowy. Wyrósł z lat spędzonych w klubie pływackim i z miłości do wody. Dziś startuję w triathlonie, na co dzień pracuję jako strażak, a na basenie pomagam ludziom poczuć się w wodzie pewnie i swobodnie: w ich tempie, bez pośpiechu i bez oceniania.</p>
-        <p class="ig">Technika pływania w krótkich filmach: <a href="https://www.instagram.com/jakubnachyla/" rel="noopener">@jakubnachyla</a></p>
-        <a class="btn btn-accent" href="https://calendar.app.google/zg8dq89M7FT8zJiC8" target="_blank" rel="noopener">Zarezerwuj u Jakuba
-          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-        </a>
+    <div class="wrap team">
+      <div class="team-head">
+        <p class="label">Trenerzy</p>
+        <h2 class="cond">Dwóch instruktorów, jeden standard</h2>
+        <p>Zajęcia 1:1, ta sama cena i te same zasady. Wybierz, czyj termin Ci pasuje.</p>
       </div>
-      <div class="stats">
-          <div class="stat"><b data-time="16100">4:28:20</b><span>Ironman 70.3 Warszawa 2026, rekord życiowy</span></div>
-          <div class="stat"><b data-time="8391">2:19:51</b><span>MP Strażaków w triathlonie, Kraśnik: 1. miejsce w kategorii wiekowej</span></div>
-          <div class="stat"><b class="w">Nr 1</b><span>Sportowiec Roku 2025 w powiecie pszczyńskim, Plebiscyt Sportowy „Dziennika Zachodniego”</span></div>
-          <div class="stat"><b class="w">Medale</b><span>pływackie na zawodach służb mundurowych</span></div>
+      <div class="team-grid">
+        <article class="tcard">
+          <figure class="tphoto"><img src="img/trener-jakub.jpg" alt="Jakub Nachyła w koszulce Woda &amp; Fitness na krytej pływalni" width="800" height="1000" loading="lazy" style="object-position:50% 22%"></figure>
+          <div class="tbody">
+            <p class="label">Założyciel Woda &amp; Fitness</p>
+            <h3 class="cond">Jakub Nachyła</h3>
+            <ul class="creds" aria-label="Uprawnienia Jakuba">
+              <li>Instruktor sportu – pływanie</li><li>Ratownik wodny WOPR</li><li>Płetwonurek SDI Open Water</li><li>Sternik motorowodny</li><li>Instruktor narciarstwa</li><li>Strażak</li>
+            </ul>
+            <p>Woda &amp; Fitness to mój projekt życiowy. Wyrósł z lat spędzonych w klubie pływackim i z miłości do wody. Dziś startuję w triathlonie, na co dzień pracuję jako strażak, a na basenie pomagam ludziom poczuć się w wodzie pewnie i swobodnie: w ich tempie, bez pośpiechu i bez oceniania.</p>
+            <p class="tfor">Prowadzi: naukę i doskonalenie pływania, kraul dla triathlonistów, test do straży.</p>
+            <a class="btn btn-accent" href="https://calendar.app.google/zg8dq89M7FT8zJiC8" target="_blank" rel="noopener">Zarezerwuj u Jakuba <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          </div>
+        </article>
+        <article class="tcard">
+          <figure class="tphoto"><img src="img/trener-kuba.jpg" alt="Kuba Strządała w piance na plaży z bojką ratowniczą" width="800" height="1000" loading="lazy" style="object-position:50% 12%"></figure>
+          <div class="tbody">
+            <p class="label">Instruktor Woda &amp; Fitness</p>
+            <h3 class="cond">Kuba Strządała</h3>
+            <ul class="creds" aria-label="Doświadczenie Kuby">
+              <li>Instruktor pływania</li><li>SMS Oświęcim</li><li>Starty w Mistrzostwach Polski</li><li>128 medali · 14 pucharów</li>
+            </ul>
+            <p>Pływa od piątego roku życia, a w pierwszych zawodach wystartował rok później. Zaczynał w UMKS Goczałkowice, potem reprezentował MUKS Gilus Gilowice, a przez całe liceum trenował w Szkole Mistrzostwa Sportowego w Oświęcimiu, startując w Mistrzostwach Polski i Małopolski.</p>
+            <p class="tfor">Prowadzi: naukę i doskonalenie pływania dla dzieci i dorosłych.</p>
+            <a class="btn btn-accent" href="https://calendar.app.google/SPsvB2McYiCYPJ649" target="_blank" rel="noopener">Zarezerwuj u Kuby <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+          </div>
+        </article>
       </div>
-      <p class="honors"><b>Wyróżnienia:</b> Nagroda Starosty Pszczyńskiego za osiągnięcia sportowe w 2025 r. · List gratulacyjny Burmistrza Pszczyny za wyniki sportowe (2026)</p>
-      </div>
-    </div>
-    <div class="wrap kuba">
-      <figure class="kuba-photo"><img src="img/trener-kuba.jpg" alt="Kuba Strządała w piance na plaży z bojką ratowniczą" width="800" height="1000" loading="lazy"></figure>
-      <div class="kuba-copy">
-        <p class="label">Instruktor Woda &amp; Fitness</p>
-        <h3 class="cond">Kuba Strządała</h3>
-        <p>Pływa od piątego roku życia, a w pierwszych zawodach wystartował rok później. Zaczynał w UMKS Goczałkowice, potem reprezentował MUKS Gilus Gilowice, a przez całe liceum trenował w Szkole Mistrzostwa Sportowego w Oświęcimiu, startując w Mistrzostwach Polski i Małopolski. Z basenu przywiózł 128 medali i 14 pucharów. Dziś uczy dzieci i dorosłych, od pierwszych kroków w wodzie po doskonalenie techniki.</p>
-        <p class="when">Ta sama cena i te same zasady. Wolne godziny widać w kalendarzu Kuby.</p>
-        <a class="btn btn-line" href="https://calendar.app.google/SPsvB2McYiCYPJ649" target="_blank" rel="noopener">Zarezerwuj u Kuby
-          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-        </a>
-      </div>
-      <figure class="kuba-podium">
+      <figure class="podium-band">
         <img src="img/kuba-podium.jpg" alt="Kuba na najwyższym stopniu podium, Jakub stopień niżej, obaj z medalami i dyplomami" width="600" height="1050" loading="lazy">
-        <figcaption>X Memoriał Pływacki im. Krzysztofa Kanika: Kuba na najwyższym stopniu, ja stopień niżej. W Woda &amp; Fitness nie ma przypadkowych ludzi, dlatego spokojnie powierzam mu swoich kursantów.</figcaption>
+        <figcaption><span class="label">Z archiwum</span><q>Kuba na najwyższym stopniu, ja stopień niżej. W Woda &amp; Fitness nie ma przypadkowych ludzi, dlatego spokojnie powierzam mu swoich kursantów.</q><span class="who">Jakub, X Memoriał Pływacki im. Krzysztofa Kanika</span></figcaption>
       </figure>
-    </div>
-  </section>
-
-  <section class="sec steps-sec" id="pierwsza-lekcja">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">Pierwsza lekcja</p>
-        <h2 class="cond">Jak to wygląda</h2>
-        <p>Trzy kroki od rezerwacji do pierwszych zajęć w wodzie.</p>
-      </div>
-      <ol class="steps">
-        <li class="step">
-          <h3 class="cond">Rezerwujesz termin</h3>
-          <p>Wybierasz wolną godzinę w kalendarzu online. Potwierdzenie dostajesz mailem.</p>
-        </li>
-        <li class="step">
-          <h3 class="cond">Przychodzisz na basen</h3>
-          <p>Spotykamy się przy recepcji Krytej Pływalni Goczuś 10 minut przed lekcją. Bilet kupujesz w kasie pływalni.</p>
-        </li>
-        <li class="step">
-          <h3 class="cond">Pracujemy w wodzie</h3>
-          <p>Najpierw sprawdzam, jak pływasz, i ustalamy cel. Po zajęciach wiesz, nad czym pracujemy dalej.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="race" id="zawody">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">Na zawodach</p>
-        <h2 class="cond">Sam startuję w triathlonie</h2>
-        <p>Techniki, której uczę na basenie, używam na każdym starcie. Strefa zmian, Triathlon Kraśnik.</p>
-      </div>
-      <ul class="race-grid">
-        <li><img src="img/zawody-strefa-zmian.jpg" alt="Jakub Nachyła w koszulce Woda &amp; Fitness przy rowerze w strefie zmian" width="750" height="1000" loading="lazy"></li>
-        <li><img src="img/zawody-rower.jpg" alt="Jakub Nachyła prowadzi rower czasowy, na plecach napis Jakub Nachyła" width="750" height="1000" loading="lazy"></li>
-        <li><img src="img/zawody-numer.jpg" alt="Numer startowy 260 wypisany na łydce" width="750" height="1000" loading="lazy"></li>
-      </ul>
-      <p class="race-note">Zdjęcia: Daniel, <a href="https://www.instagram.com/den_cinematography/" rel="noopener">@den_cinematography</a></p>
     </div>
   </section>
 
@@ -615,6 +625,31 @@ footer a:hover{color:var(--deep-fg)}
     </div>
   </section>
 
+  <section class="sec steps-sec" id="pierwsza-lekcja">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Pierwsza lekcja</p>
+        <h2 class="cond">Jak to wygląda</h2>
+        <p>Trzy kroki od rezerwacji do pierwszych zajęć w wodzie.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <h3 class="cond">Rezerwujesz termin</h3>
+          <p>Wybierasz wolną godzinę w kalendarzu online. Potwierdzenie dostajesz mailem.</p>
+        </li>
+        <li class="step">
+          <h3 class="cond">Przychodzisz na basen</h3>
+          <p>Spotykamy się przy recepcji Krytej Pływalni Goczuś 10 minut przed lekcją. Bilet kupujesz w kasie pływalni.</p>
+        </li>
+        <li class="step">
+          <h3 class="cond">Pracujemy w wodzie</h3>
+          <p>Najpierw sprawdzam, jak pływasz, i ustalamy cel. Po zajęciach wiesz, nad czym pracujemy dalej.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+
   <section class="sec" id="cennik">
     <div class="wrap">
       <div class="sec-head">
@@ -641,6 +676,29 @@ footer a:hover{color:var(--deep-fg)}
           </dl>
         </aside>
       </div>
+    </div>
+  </section>
+
+  <section class="race" id="zawody">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Na zawodach</p>
+        <h2 class="cond">Jakub na zawodach</h2>
+        <p>Techniki, której uczę na basenie, używam na każdym starcie. Liczby i zdjęcia z ostatnich sezonów.</p>
+      </div>
+      <div class="stats race-stats">
+          <div class="stat"><b data-time="16100">4:28:20</b><span>Ironman 70.3 Warszawa 2026, rekord życiowy</span></div>
+          <div class="stat"><b data-time="8391">2:19:51</b><span>MP Strażaków w triathlonie, Kraśnik: 1. miejsce w kategorii wiekowej</span></div>
+          <div class="stat"><b class="w">Nr 1</b><span>Sportowiec Roku 2025 w powiecie pszczyńskim, Plebiscyt Sportowy „Dziennika Zachodniego”</span></div>
+          <div class="stat"><b class="w">Medale</b><span>pływackie na zawodach służb mundurowych</span></div>
+      </div>
+      <p class="honors race-honors"><b>Wyróżnienia:</b> Nagroda Starosty Pszczyńskiego za osiągnięcia sportowe w 2025 r. · List gratulacyjny Burmistrza Pszczyny za wyniki sportowe (2026)</p>
+      <ul class="race-grid">
+        <li><img src="img/zawody-strefa-zmian.jpg" alt="Jakub Nachyła w koszulce Woda &amp; Fitness przy rowerze w strefie zmian" width="750" height="1000" loading="lazy"></li>
+        <li><img src="img/zawody-rower.jpg" alt="Jakub Nachyła prowadzi rower czasowy, na plecach napis Jakub Nachyła" width="750" height="1000" loading="lazy"></li>
+        <li><img src="img/zawody-numer.jpg" alt="Numer startowy 260 wypisany na łydce" width="750" height="1000" loading="lazy"></li>
+      </ul>
+      <p class="race-note">Zdjęcia: Daniel, <a href="https://www.instagram.com/den_cinematography/" rel="noopener">@den_cinematography</a></p>
     </div>
   </section>
 
@@ -692,11 +750,11 @@ footer a:hover{color:var(--deep-fg)}
     <div>
       <p class="label">Rezerwacja</p>
       <h2 class="cond">Zarezerwuj pierwszą lekcję</h2>
-      <p class="lead">Wybierz wolny termin w kalendarzu. Nie ma godziny, która Ci pasuje? Sprawdź kalendarz Kuby albo napisz.</p>
+      <p class="lead">Ta sama cena i te same zasady u obu instruktorów. Wybierz kalendarz, w którym jest termin dla Ciebie, albo napisz.</p>
     </div>
     <div class="coaches">
-      <article class="coach-card main">
-        <p class="k">Trener prowadzący</p>
+      <article class="coach-card">
+        <p class="k">Założyciel Woda &amp; Fitness</p>
         <h3 class="cond">Jakub Nachyła</h3>
         <p>Wszystkie zajęcia: nauka i doskonalenie pływania, kraul dla triathlonistów, test sprawnościowy do straży.</p>
         <a class="btn btn-accent" href="https://calendar.app.google/zg8dq89M7FT8zJiC8" target="_blank" rel="noopener">Zarezerwuj u Jakuba
@@ -707,8 +765,7 @@ footer a:hover{color:var(--deep-fg)}
         <p class="k">Instruktor Woda &amp; Fitness</p>
         <h3 class="cond">Kuba Strządała</h3>
         <p>Nauka i doskonalenie pływania dla dzieci i dorosłych. Ta sama cena i te same zasady.</p>
-        <p class="when">Wolne godziny widać w kalendarzu Kuby, basen Goczuś</p>
-        <a class="btn btn-line" href="https://calendar.app.google/SPsvB2McYiCYPJ649" target="_blank" rel="noopener">Zarezerwuj u Kuby
+        <a class="btn btn-accent" href="https://calendar.app.google/SPsvB2McYiCYPJ649" target="_blank" rel="noopener">Zarezerwuj u Kuby
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
         </a>
       </article>
@@ -722,7 +779,7 @@ footer a:hover{color:var(--deep-fg)}
   </div>
 </section>
 <div class="mbar" id="mbar">
-  <a class="btn btn-accent" href="#rezerwacja">Zarezerwuj lekcję</a>
+  <a class="btn btn-accent" href="#trenerzy">Zarezerwuj lekcję</a>
   <a class="call" href="tel:+48691325011">Zadzwoń</a>
 </div>
 <footer>
@@ -739,7 +796,7 @@ footer a:hover{color:var(--deep-fg)}
 
   /* pojawianie się sekcji przy przewijaniu (tylko elementy poniżej pierwszego ekranu) */
   if("IntersectionObserver" in window && !reduce){
-    var sel=".item,.picker,.step,.stat,.honors,.rev,.race-grid li,.kuba-photo,.kuba-copy,.kuba-podium,.portrait,.coach-copy,.r,.rules,.place,.faq,.sec-head,.contact li";
+    var sel=".item,.picker,.step,.stat,.honors,.rev,.race-grid li,.tcard,.podium-band,.team-head,.r,.rules,.place,.faq,.sec-head,.contact li,.coach-card";
     var vh=window.innerHeight;
     var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove("pre"); io.unobserve(e.target);} });},{rootMargin:"0px 0px -8% 0px"});
     var groups=new Map();
@@ -799,8 +856,8 @@ footer a:hover{color:var(--deep-fg)}
       cta='<a class="btn btn-accent" href="'+L1+'" target="_blank" rel="noopener">Umów diagnostykę '+ARROW+'</a>';
     } else {
       var t=TXT[state.who][state.goal]; h=t[0]; p=t[1];
-      price="140 zł / 60 min · pakiet 5 lekcji 650 zł"; who="Poprowadzi Jakub albo Kuba. Wybierz, czyj termin Ci pasuje.";
-      cta='<a class="btn btn-accent" href="'+L1+'" target="_blank" rel="noopener">Termin u Jakuba '+ARROW+'</a><a class="btn btn-line" href="'+L2+'" target="_blank" rel="noopener">Termin u Kuby</a>';
+      price="140 zł / 60 min · pakiet 5 lekcji 650 zł"; who="Poprowadzi Jakub albo Kuba: ta sama cena i te same zasady.";
+      cta='<a class="btn btn-accent" href="'+L1+'" target="_blank" rel="noopener">Termin u Jakuba '+ARROW+'</a><a class="btn btn-accent" href="'+L2+'" target="_blank" rel="noopener">Termin u Kuby '+ARROW+'</a>';
     }
     out.classList.remove("swap"); void out.offsetWidth;
     out.innerHTML='<p class="label">Proponuję</p><h4>'+esc(h)+'</h4><p>'+esc(p)+'</p><p class="po-price">'+esc(price)+'</p><p class="po-who">'+esc(who)+'</p><div class="po-cta">'+cta+'</div>';
