@@ -222,6 +222,48 @@ p{margin:0}
   .stat:nth-child(odd){border-right:0}
 }
 
+/* interakcje */
+.js .rv{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv.pre{opacity:0;transform:translateY(26px)}
+.hero-photo{transition:transform .35s ease;transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.item h3{transition:color .2s ease}
+.item:hover h3{color:var(--brand-blue)}
+.rev{transition:transform .25s ease,box-shadow .25s ease}
+.rev:hover{transform:translateY(-4px);box-shadow:0 18px 40px -26px rgba(11,26,51,.45)}
+.race-grid li{overflow:hidden;border-radius:4px}
+.race-grid img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.race-grid li:hover img{transform:scale(1.045)}
+.portrait img,.kuba-photo img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.portrait:hover img,.kuba-photo:hover img{transform:scale(1.03)}
+@media (prefers-reduced-motion: reduce){
+  .js .rv,.js .rv.pre{transition:none;opacity:1;transform:none}
+  .hero-photo,.rev,.race-grid img,.portrait img,.kuba-photo img{transition:none;transform:none!important}
+}
+
+/* dobierz zajęcia */
+.picker{margin-top:56px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.picker-left{padding:32px;display:flex;flex-direction:column;gap:22px;background:var(--bg-2);min-width:0}
+.picker-left .label{color:var(--muted)}
+.picker-left h3{font-size:clamp(1.7rem,3vw,2.2rem);line-height:.95}
+.pq{display:flex;flex-direction:column;gap:10px}
+.pq > span{font-weight:600}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{font:inherit;font-size:.95rem;font-weight:500;padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer;transition:border-color .15s,background-color .15s,color .15s}
+.opt:hover{border-color:var(--brand-blue)}
+.opt[aria-pressed="true"]{background:var(--brand-navy);border-color:var(--brand-navy);color:#FFFFFF}
+.opt:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.picker-out{position:relative;isolation:isolate;padding:32px;background:var(--deep);color:var(--deep-fg);display:flex;flex-direction:column;gap:14px;min-width:0}
+.picker-out .label{color:var(--deep-muted)}
+.picker-out h4{margin:0;font-family:var(--display);font-stretch:68%;font-variation-settings:"wdth" 68;font-weight:800;text-transform:uppercase;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:.95}
+.picker-out p{color:var(--deep-fg);opacity:.86;max-width:32em}
+.picker-out .po-price{font-family:var(--display);font-stretch:75%;font-variation-settings:"wdth" 75;font-weight:800;font-size:1.35rem;opacity:1}
+.picker-out .po-who{font-size:.9rem;color:var(--deep-muted);opacity:1}
+.po-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:8px}
+.picker-out.swap > *{animation:poIn .45s ease both}
+@keyframes poIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.picker-out.swap > *{animation:none}}
+@media (max-width:860px){.picker{grid-template-columns:minmax(0,1fr)}.picker-left,.picker-out{padding:24px 20px}}
+
 /* trenerzy: dodatki */
 .honors{margin:0;font-size:.9rem;line-height:1.55;color:var(--deep-muted);max-width:40em}
 .honors b{color:var(--deep-fg);font-weight:600}
@@ -424,6 +466,40 @@ footer a:hover{color:var(--deep-fg)}
           <div class="price"><b>od 430 zł</b><span>miesięcznie</span></div>
         </article>
       </div>
+
+      <div class="picker" id="dobierz">
+        <div class="picker-left">
+          <p class="label">Dobierz zajęcia</p>
+          <h3 class="cond">Nie wiesz, co wybrać? Dwa kliknięcia.</h3>
+          <div class="pq">
+            <span id="pq-who">Kto będzie pływał?</span>
+            <div class="opts" role="group" aria-labelledby="pq-who">
+              <button type="button" class="opt" id="opt-dziecko" data-q="who" data-v="dziecko" aria-pressed="false">Dziecko</button>
+              <button type="button" class="opt" id="opt-dorosly" data-q="who" data-v="dorosly" aria-pressed="true">Dorosły</button>
+            </div>
+          </div>
+          <div class="pq">
+            <span id="pq-goal">Jaki jest cel?</span>
+            <div class="opts" role="group" aria-labelledby="pq-goal">
+              <button type="button" class="opt" id="opt-nauka" data-q="goal" data-v="nauka" aria-pressed="true">Nauka od podstaw</button>
+              <button type="button" class="opt" id="opt-technika" data-q="goal" data-v="technika" aria-pressed="false">Lepsza technika</button>
+              <button type="button" class="opt" id="opt-tri" data-q="goal" data-v="tri" aria-pressed="false">Triathlon</button>
+              <button type="button" class="opt" id="opt-psp" data-q="goal" data-v="psp" aria-pressed="false">Test do straży</button>
+            </div>
+          </div>
+        </div>
+        <div class="picker-out" id="picker-out" aria-live="polite">
+          <p class="label">Proponuję</p>
+          <h4>Nauka pływania od podstaw</h4>
+          <p>Od pierwszego wejścia do wody do swobodnego pływania. Bez grupy, w Twoim tempie i bez oceniania.</p>
+          <p class="po-price">140 zł / 60 min · pakiet 5 lekcji 650 zł</p>
+          <p class="po-who">Poprowadzi Jakub albo Kuba. Wybierz, czyj termin Ci pasuje.</p>
+          <div class="po-cta">
+            <a class="btn btn-accent" href="https://calendar.app.google/zg8dq89M7FT8zJiC8" target="_blank" rel="noopener">Termin u Jakuba <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+            <a class="btn btn-line" href="https://calendar.app.google/SPsvB2McYiCYPJ649" target="_blank" rel="noopener">Termin u Kuby</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -445,8 +521,8 @@ footer a:hover{color:var(--deep-fg)}
         </a>
       </div>
       <div class="stats">
-          <div class="stat"><b>4:28:20</b><span>Ironman 70.3 Warszawa 2026, rekord życiowy</span></div>
-          <div class="stat"><b>2:19:51</b><span>MP Strażaków w triathlonie, Kraśnik: 1. miejsce w kategorii wiekowej</span></div>
+          <div class="stat"><b data-time="16100">4:28:20</b><span>Ironman 70.3 Warszawa 2026, rekord życiowy</span></div>
+          <div class="stat"><b data-time="8391">2:19:51</b><span>MP Strażaków w triathlonie, Kraśnik: 1. miejsce w kategorii wiekowej</span></div>
           <div class="stat"><b class="w">Nr 1</b><span>Sportowiec Roku 2025 w powiecie pszczyńskim, Plebiscyt Sportowy „Dziennika Zachodniego”</span></div>
           <div class="stat"><b class="w">Medale</b><span>pływackie na zawodach służb mundurowych</span></div>
       </div>
@@ -658,6 +734,89 @@ footer a:hover{color:var(--deep-fg)}
 
 <script>
 (function(){
+  var root=document.documentElement; root.classList.add("js");
+  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* pojawianie się sekcji przy przewijaniu (tylko elementy poniżej pierwszego ekranu) */
+  if("IntersectionObserver" in window && !reduce){
+    var sel=".item,.picker,.step,.stat,.honors,.rev,.race-grid li,.kuba-photo,.kuba-copy,.kuba-podium,.portrait,.coach-copy,.r,.rules,.place,.faq,.sec-head,.contact li";
+    var vh=window.innerHeight;
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove("pre"); io.unobserve(e.target);} });},{rootMargin:"0px 0px -8% 0px"});
+    var groups=new Map();
+    document.querySelectorAll(sel).forEach(function(el){
+      if(el.getBoundingClientRect().top < vh) return;
+      var par=el.parentElement, n=(groups.get(par)||0); groups.set(par,n+1);
+      el.style.transitionDelay=Math.min(n,4)*90+"ms";
+      el.classList.add("rv","pre"); io.observe(el);
+    });
+  }
+
+  /* stoper: czasy z zawodów odliczają się przy pierwszym pokazaniu */
+  function fmt(t){var h=Math.floor(t/3600),m=Math.floor(t%3600/60),s=Math.floor(t%60);return h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s;}
+  if("IntersectionObserver" in window && !reduce){
+    var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting) return; cio.unobserve(e.target);
+      var el=e.target, end=+el.getAttribute("data-time"), t0=performance.now(), dur=1600; setTimeout(function(){el.textContent=fmt(end);},dur+150);
+      (function tick(now){ var k=Math.min(1,(now-t0)/dur); var v=end*(1-Math.pow(1-k,3)); el.textContent=fmt(v); if(k<1) requestAnimationFrame(tick); else el.textContent=fmt(end); })(t0);
+    });},{threshold:.6});
+    document.querySelectorAll("[data-time]").forEach(function(el){
+      if(el.getBoundingClientRect().top < window.innerHeight) return;
+      el.textContent=fmt(0); cio.observe(el);
+    });
+  }
+
+  /* zdjęcie w nagłówku lekko podąża za kursorem */
+  var hero=document.querySelector(".hero"), ph=document.querySelector(".hero-photo");
+  if(hero&&ph&&!reduce&&window.matchMedia("(hover:hover)").matches){
+    hero.addEventListener("pointermove",function(e){
+      var r=hero.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      ph.style.setProperty("--ry",(x*7).toFixed(2)+"deg"); ph.style.setProperty("--rx",(-y*6).toFixed(2)+"deg");
+    });
+    hero.addEventListener("pointerleave",function(){ ph.style.setProperty("--ry","0deg"); ph.style.setProperty("--rx","0deg"); });
+  }
+
+  /* dobierz zajęcia */
+  var L1="https://calendar.app.google/zg8dq89M7FT8zJiC8", L2="https://calendar.app.google/SPsvB2McYiCYPJ649";
+  var ARROW='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+  var state={who:"dorosly",goal:"nauka"};
+  var out=document.getElementById("picker-out");
+  var TXT={
+    dziecko:{nauka:["Nauka pływania dla dziecka","Oswojenie z wodą i pierwsze style, w tempie dziecka. Zajęcia 1:1, więc nikt nie zostaje w tyle."],
+             technika:["Doskonalenie techniki dla dziecka","Poprawa stylów krok po kroku i konkretny plan na kolejne lekcje."]},
+    dorosly:{nauka:["Nauka pływania od podstaw","Od pierwszego wejścia do wody do swobodnego pływania. Bez grupy, w Twoim tempie i bez oceniania."],
+             technika:["Doskonalenie techniki","Oddech, ułożenie ciała, praca ramion. Pływasz dłużej i z mniejszym wysiłkiem."]}
+  };
+  function esc(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+  function render(){
+    var h,p,price,who,cta;
+    if(state.goal==="tri"){
+      h="Kraul dla triathlonistów"; p="Oddech, ułożenie ciała i ekonomia ruchu. Wychodzisz z wody z siłami na rower. Prowadzę sam, bo startuję na dystansie 70.3.";
+      price="140 zł / 60 min · pakiet 5 lekcji 650 zł"; who="Poprowadzi Jakub.";
+      cta='<a class="btn btn-accent" href="'+L1+'" target="_blank" rel="noopener">Termin u Jakuba '+ARROW+'</a>';
+    } else if(state.goal==="psp"){
+      h="Test sprawnościowy do straży"; p="Część lądowa i pływanie. Zaczynamy od diagnostyki, potem plan aż do egzaminu.";
+      price="diagnostyka 280 zł · potem od 430 zł / mies."; who="Poprowadzi Jakub, czynny strażak.";
+      cta='<a class="btn btn-accent" href="'+L1+'" target="_blank" rel="noopener">Umów diagnostykę '+ARROW+'</a>';
+    } else {
+      var t=TXT[state.who][state.goal]; h=t[0]; p=t[1];
+      price="140 zł / 60 min · pakiet 5 lekcji 650 zł"; who="Poprowadzi Jakub albo Kuba. Wybierz, czyj termin Ci pasuje.";
+      cta='<a class="btn btn-accent" href="'+L1+'" target="_blank" rel="noopener">Termin u Jakuba '+ARROW+'</a><a class="btn btn-line" href="'+L2+'" target="_blank" rel="noopener">Termin u Kuby</a>';
+    }
+    out.classList.remove("swap"); void out.offsetWidth;
+    out.innerHTML='<p class="label">Proponuję</p><h4>'+esc(h)+'</h4><p>'+esc(p)+'</p><p class="po-price">'+esc(price)+'</p><p class="po-who">'+esc(who)+'</p><div class="po-cta">'+cta+'</div>';
+    out.classList.add("swap");
+  }
+  document.querySelectorAll(".opt").forEach(function(b){
+    b.addEventListener("click",function(){
+      var q=b.getAttribute("data-q"); state[q]=b.getAttribute("data-v");
+      document.querySelectorAll('.opt[data-q="'+q+'"]').forEach(function(o){ o.setAttribute("aria-pressed", o===b?"true":"false"); });
+      render();
+    });
+  });
+})();
+</script>
+<script>
+(function(){
   var bar=document.getElementById("mbar"), target=document.getElementById("rezerwacja");
   if(!bar||!target||!("IntersectionObserver" in window)) return;
   new IntersectionObserver(function(es){ es.forEach(function(e){ bar.classList.toggle("hide", e.isIntersecting); }); },{threshold:0.15}).observe(target);
@@ -669,7 +828,7 @@ footer a:hover{color:var(--deep-fg)}
   var VS = "attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
   var FS = [
     "precision mediump float;",
-    "uniform vec2 uR;uniform float uT;uniform float uFade;uniform float uGain;",
+    "uniform vec2 uR;uniform float uT;uniform float uFade;uniform float uGain;uniform vec3 uM;",
     "vec2 h2(vec2 p){p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3)));return fract(sin(p)*43758.5453);}",
     "float edge(vec2 p,float t){vec2 n=floor(p),f=fract(p);float d1=8.,d2=8.;",
     " for(int j=-1;j<=1;j++){for(int i=-1;i<=1;i++){vec2 g=vec2(float(i),float(j));vec2 o=h2(n+g);",
@@ -679,6 +838,8 @@ footer a:hover{color:var(--deep-fg)}
     "void main(){",
     " vec2 uv=gl_FragCoord.xy/uR.y; float x=gl_FragCoord.x/uR.x; float y=gl_FragCoord.y/uR.y;",
     " float t=uT*.28; vec2 p=uv*6.5;",
+    " vec2 dm=(gl_FragCoord.xy-uM.xy)/uR.y; float dd=length(dm); float rip=uM.z*exp(-dd*dd*22.)*sin(dd*48.-uT*7.);",
+    " p+=normalize(dm+1e-4)*rip*.35;",
     " p+=.22*vec2(sin(p.y*1.3+t*1.4),cos(p.x*1.1-t*1.2)); p+=.08*vec2(sin(p.y*3.7-t*2.),cos(p.x*3.1+t*1.7));",
     " float e1=edge(p,t); float e2=edge(p*1.35+7.3,t*1.15+1.7);",
     " float l=pow(smoothstep(.09,.0,e1),1.6)*.7+pow(smoothstep(.07,.0,e2),1.6)*.45; l+=l*l*.6;",
@@ -686,6 +847,7 @@ footer a:hover{color:var(--deep-fg)}
     " vec3 deep=vec3(.031,.086,.18); vec3 mid=vec3(.047,.2,.40);",
     " vec3 col=mix(deep,mid,.25+.55*y*(1.-x*.3));",
     " col+=vec3(.5,.78,1.)*l*.24*uGain;",
+    " col+=vec3(.4,.7,1.)*max(rip,0.)*.10*uGain;",
     " gl_FragColor=vec4(col,1.);}"
   ].join("\n");
 
@@ -701,7 +863,7 @@ footer a:hover{color:var(--deep-fg)}
     gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
     var a=gl.getAttribLocation(pr,"a"); gl.enableVertexAttribArray(a); gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
     var kind = canvas.getAttribute("data-water"); var fade = kind==="coach" ? 0.15 : 0.3; var gain = kind==="coach" ? 0.45 : 1.0;
-    return {gl:gl,uR:gl.getUniformLocation(pr,"uR"),uT:gl.getUniformLocation(pr,"uT"),uF:gl.getUniformLocation(pr,"uFade"),uG:gl.getUniformLocation(pr,"uGain"),fade:fade,gain:gain,canvas:canvas,visible:true};
+    return {gl:gl,uM:gl.getUniformLocation(pr,"uM"),mx:-9999,my:-9999,ms:0,mt:0,uR:gl.getUniformLocation(pr,"uR"),uT:gl.getUniformLocation(pr,"uT"),uF:gl.getUniformLocation(pr,"uFade"),uG:gl.getUniformLocation(pr,"uGain"),fade:fade,gain:gain,canvas:canvas,visible:true};
   }
   function size(s){
     var scale=Math.min(window.devicePixelRatio||1,1.5)*0.6;
@@ -710,7 +872,7 @@ footer a:hover{color:var(--deep-fg)}
     s.gl.viewport(0,0,w,h);
   }
   function draw(s,t){
-    size(s); s.gl.uniform2f(s.uR,s.canvas.width,s.canvas.height); s.gl.uniform1f(s.uT,t); s.gl.uniform1f(s.uF,s.fade); s.gl.uniform1f(s.uG,s.gain);
+    size(s); s.gl.uniform2f(s.uR,s.canvas.width,s.canvas.height); s.gl.uniform1f(s.uT,t); s.gl.uniform1f(s.uF,s.fade); s.gl.uniform1f(s.uG,s.gain); s.gl.uniform3f(s.uM,s.mx,s.my,s.ms);
     s.gl.drawArrays(s.gl.TRIANGLE_STRIP,0,4);
   }
   var scenes=[];
@@ -724,10 +886,18 @@ footer a:hover{color:var(--deep-fg)}
   }
   window.addEventListener("resize",function(){scenes.forEach(function(s){draw(s,12.0+(performance.now()/1000));});});
   if(reduce) return;
+  scenes.forEach(function(s){
+    var host=s.canvas.parentElement;
+    host.addEventListener("pointermove",function(e){
+      var r=s.canvas.getBoundingClientRect(), k=s.canvas.width/Math.max(1,r.width);
+      s.mx=(e.clientX-r.left)*k; s.my=s.canvas.height-(e.clientY-r.top)*k; s.mt=1;
+    },{passive:true});
+    host.addEventListener("pointerleave",function(){ s.mt=0; },{passive:true});
+  });
   var t0=performance.now();
   (function loop(now){
     var t=12.0+(now-t0)/1000;
-    scenes.forEach(function(s){ if(s.visible) draw(s,t); });
+    scenes.forEach(function(s){ s.ms+=(s.mt-s.ms)*0.06; s.mt*=0.985; if(s.visible) draw(s,t); });
     requestAnimationFrame(loop);
   })(t0);
 })();
