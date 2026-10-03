@@ -796,7 +796,7 @@ footer a:hover{color:var(--deep-fg)}
         <div class="list">
           <details>
             <summary>Do kogo się zapisać?<span class="ic" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></summary>
-            <p>Dzieci od 6 lat (młodsze na lekcję próbną) i dorośli, którzy dopiero zaczynają: do Kuby. Dorośli, którzy już przepłyną basen i chcą poprawić technikę, triathloniści i test do straży: do Jakuba. Jeśli u Kuby nie pasuje Ci żaden termin, zapisz się do Jakuba. Cena i zasady są takie same.</p>
+            <p>Dzieci od 6 lat (młodsze na lekcję próbną) i dorośli, którzy dopiero zaczynają: do Kuby. Dorośli, którzy już przepłyną basen i chcą poprawić technikę, triathloniści i test do straży: do Jakuba. Jeśli u Kuby nie pasuje Ci żaden termin, zapisz się do Jakuba, a przy doskonaleniu techniki działa to też w drugą stronę. Cena i zasady są takie same.</p>
           </details>
           <details>
             <summary>Moje dziecko ma 5 lat. Może zacząć?<span class="ic" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></summary>
@@ -838,7 +838,7 @@ footer a:hover{color:var(--deep-fg)}
     <div>
       <p class="label">Rezerwacja</p>
       <h2 class="cond">Zarezerwuj pierwszą lekcję</h2>
-      <p class="lead">Ta sama cena i te same zasady u obu instruktorów. Dzieci i dorośli od zera zapisują się do Kuby, a technika, triathlon i test do straży są u Jakuba. Jeśli u Kuby nie ma pasującego terminu, wybierz kalendarz Jakuba albo napisz.</p>
+      <p class="lead">Ta sama cena i te same zasady u obu instruktorów. Dzieci i dorośli od zera zapisują się do Kuby, a technika, triathlon i test do straży są u Jakuba. Jeśli u jednego z nas nie ma pasującego terminu, sprawdź kalendarz drugiego albo napisz. Triathlon i test do straży prowadzi tylko Jakub.</p>
     </div>
     <div class="coaches">
       <article class="coach-card">
@@ -987,7 +987,10 @@ footer a:hover{color:var(--deep-fg)}
         who="Poprowadzi Kuba. Cena i zasady takie same jak u Jakuba."; cta=bK;
         alt=L1_45 ? 'Nie pasuje żaden termin? Terminy Jakuba: <a href="'+L1_45+'" target="_blank" rel="noopener">45 min</a> · <a href="'+L1+'" target="_blank" rel="noopener">60 min</a>'
                   : 'Nie pasuje żaden termin? <a href="'+L1+'" target="_blank" rel="noopener">Zobacz terminy Jakuba</a>';
-      } else { who="Poprowadzi Jakub."; cta=bJ; }
+      } else {
+        who="Poprowadzi Jakub."; cta=bJ;
+        alt='Nie pasuje żaden termin? <a href="'+L2+'" target="_blank" rel="noopener">Zobacz terminy Kuby</a>';
+      }
     }
     out.classList.remove("swap"); void out.offsetWidth;
     out.innerHTML='<p class="label">Proponuję</p><h4>'+esc(h)+'</h4><p>'+esc(p)+'</p><p class="po-price">'+esc(price)+'</p><p class="po-who">'+esc(who)+'</p><div class="po-cta">'+cta+'</div>'+(state.goal!=="psp"&&!L1_45?'<p class="po-alt">W kalendarzu rezerwujesz godzinę, a długość (45 lub 60 min) podajesz przy rezerwacji.</p>':'')+(alt?'<p class="po-alt">'+alt+'</p>':'');
