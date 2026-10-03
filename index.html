@@ -19,6 +19,7 @@
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SportsActivityLocation", "name": "Woda & Fitness Jakub Nachyła", "description": "Indywidualne lekcje pływania dla dzieci, dorosłych i triathlonistów oraz przygotowanie do testu sprawnościowego do straży.", "url": "https://wodaifitness.pl/", "image": "https://wodaifitness.pl/og.jpg", "telephone": "+48691325011", "email": "wodaifitness@gmail.com", "priceRange": "120–140 zł", "address": {"@type": "PostalAddress", "streetAddress": "ul. Wisławy Szymborskiej 1", "postalCode": "43-230", "addressLocality": "Goczałkowice-Zdrój", "addressRegion": "śląskie", "addressCountry": "PL"}, "areaServed": ["Goczałkowice-Zdrój", "Pszczyna"], "sameAs": ["https://www.instagram.com/jakubnachyla/"], "founder": {"@type": "Person", "name": "Jakub Nachyła"}}</script>
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:"Archivo";font-style:normal;font-display:swap;font-weight:100 900;font-stretch:62% 125%;src:url(fonts/archivo-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
@@ -246,6 +247,28 @@ p{margin:0}
   .js .rv,.js .rv.pre{transition:none;opacity:1;transform:none}
   .hero-photo,.rev,.race-grid img,.portrait img,.kuba-photo img{transition:none;transform:none!important}
 }
+
+/* znaczki na zdjęciu w nagłówku */
+.hero-chip{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:9px 14px 9px 9px;border-radius:14px;background:rgba(8,22,46,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);color:#fff;font-size:.86rem;font-weight:600;line-height:1.2;box-shadow:0 14px 30px -14px rgba(0,0,0,.7)}
+.hero-chip small{display:block;margin-top:1px;font-weight:500;font-size:.74rem;color:rgba(255,255,255,.72)}
+.hero-chip .ic{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#08162E}
+.hero-chip .ic svg{width:17px;height:17px}
+.hc-bot .ic{background:#F5C518}
+.hc-top{left:14px;top:14px}
+.hc-bot{right:14px;bottom:14px}
+.js .hero-chip{opacity:0;transform:translateY(10px);animation:chipIn .7s cubic-bezier(.2,.7,.2,1) forwards}
+.js .hc-top{animation-delay:.5s}.js .hc-bot{animation-delay:.75s}
+@keyframes chipIn{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.js .hero-chip{animation:none;opacity:1;transform:none}}
+@media (max-width:640px){.hero-chip{font-size:.78rem;padding:7px 11px 7px 7px;gap:8px}.hero-chip .ic{width:26px;height:26px}.hero-chip .ic svg{width:14px;height:14px}.hc-top{left:10px;top:10px}.hc-bot{right:10px;bottom:10px}}
+/* fala na styku ciemnych i jasnych sekcji */
+.wave{position:absolute;left:0;right:0;height:46px;color:var(--bg);pointer-events:none;z-index:1;line-height:0}
+.wave svg{display:block;width:100%;height:100%}
+.wave.bottom{bottom:-1px}
+.wave.top{top:-1px;transform:scaleY(-1)}
+.hero .wrap{padding-bottom:96px}
+.book .wrap{padding-top:128px}
+@media (max-width:640px){.wave{height:26px}.hero .wrap{padding-bottom:64px}.book .wrap{padding-top:80px}}
 
 /* poradniki */
 .tips{padding-block:96px}
@@ -545,15 +568,16 @@ footer a:hover{color:var(--deep-fg)}
         </a>
         <a class="btn btn-line" href="#cennik">Cennik</a>
       </div>
-      <p class="trust">Sportowiec Roku 2025 w powiecie pszczyńskim · Instruktor sportu – pływanie · Ratownik wodny WOPR</p>
+      <p class="trust">Instruktor sportu – pływanie · Ratownik wodny WOPR · Strażak PSP · Były zawodnik klubowy</p>
       <div class="facts">
         <div><b>od 120 zł</b><span>lekcja 45 lub 60 min</span></div>
         <div><b>5,0 ★</b><span>9 opinii w Google</span></div>
         <div><b>1:1</b><span>dwóch instruktorów</span></div>
       </div>
       </div>
-      <figure class="hero-photo"><img src="img/hero-podwodne.jpg" alt="Jakub Nachyła płynie kraulem pod wodą wzdłuż toru basenu" width="800" height="1000" fetchpriority="high"><video class="hero-video" data-mp4="img/hero-plywanie.mp4" data-webm="img/hero-plywanie.webm" muted loop playsinline disablepictureinpicture preload="none" aria-hidden="true" tabindex="-1"></video></figure>
+      <figure class="hero-photo"><img src="img/hero-podwodne.jpg" alt="Jakub Nachyła płynie kraulem pod wodą wzdłuż toru basenu" width="800" height="1000" fetchpriority="high"><video class="hero-video" data-mp4="img/hero-plywanie.mp4" data-webm="img/hero-plywanie.webm" muted loop playsinline disablepictureinpicture preload="none" aria-hidden="true" tabindex="-1"></video><span class="hero-chip hc-top"><span class="ic"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 2.5h6v3.2a3 3 0 0 1-6 0V2.5zM5 3.5H3v1a2 2 0 0 0 2 2M11 3.5h2v1a2 2 0 0 1-2 2M8 8.7v2.3M5.5 13.5h5M6.5 13.5l.5-2.5h2l.5 2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Sportowiec Roku 2025<small>powiat pszczyński</small></span></span><span class="hero-chip hc-bot"><span class="ic"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 1.8 7 6M10.5 1.8 9 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="10" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 8.3v3.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span>Złoto MP Strażaków w pływaniu<small>sztafeta 4×50 m · 2025</small></span></span></figure>
     </div>
+    <div class="wave bottom" aria-hidden="true"><svg viewBox="0 0 1440 46" preserveAspectRatio="none"><path d="M0 26C160 6 320 4 480 16s320 30 480 24 320-30 480-26V46H0z" fill="currentColor"/></svg></div>
   </section>
 
   <section class="sec" id="zajecia">
@@ -704,7 +728,7 @@ footer a:hover{color:var(--deep-fg)}
       <ol class="steps">
         <li class="step">
           <h3 class="cond">Rezerwujesz termin</h3>
-          <p>Wybierasz wolną godzinę w kalendarzu online. Potwierdzenie dostajesz mailem.</p>
+          <p>Wybierasz wolną godzinę w kalendarzu online i zaznaczasz, czy lekcja ma trwać 45, czy 60 minut. Potwierdzenie dostajesz mailem.</p>
         </li>
         <li class="step">
           <h3 class="cond">Przychodzisz na basen</h3>
@@ -712,7 +736,7 @@ footer a:hover{color:var(--deep-fg)}
         </li>
         <li class="step">
           <h3 class="cond">Pracujemy w wodzie</h3>
-          <p>Najpierw sprawdzam, jak pływasz, i ustalamy cel. Po zajęciach wiesz, nad czym pracujemy dalej.</p>
+          <p>Na początku instruktor sprawdza, jak pływasz, i razem ustalacie cel. Po zajęciach wiesz, nad czym pracujecie dalej.</p>
         </li>
       </ol>
     </div>
@@ -867,11 +891,12 @@ footer a:hover{color:var(--deep-fg)}
 
 <section class="water book" id="rezerwacja">
   <canvas data-water="book" aria-hidden="true"></canvas>
+  <div class="wave top" aria-hidden="true"><svg viewBox="0 0 1440 46" preserveAspectRatio="none"><path d="M0 26C160 6 320 4 480 16s320 30 480 24 320-30 480-26V46H0z" fill="currentColor"/></svg></div>
   <div class="wrap">
     <div>
       <p class="label">Rezerwacja</p>
       <h2 class="cond">Zarezerwuj pierwszą lekcję</h2>
-      <p class="lead">Ta sama cena i te same zasady u obu instruktorów. Dzieci i dorośli od zera zapisują się do Kuby, a technika, triathlon i test do straży są u Jakuba. Jeśli u jednego z nas nie ma pasującego terminu, sprawdź kalendarz drugiego albo napisz. Triathlon i test do straży prowadzi tylko Jakub.</p>
+      <p class="lead">Ta sama cena i zasady u obu instruktorów. Dzieci i dorośli od zera: Kuba. Technika, triathlon i test do straży: Jakub. Brak pasującego terminu? Sprawdź kalendarz drugiego albo zadzwoń.</p>
     </div>
     <div class="coaches">
       <article class="coach-card">
