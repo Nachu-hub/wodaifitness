@@ -590,6 +590,7 @@ footer a:hover{color:var(--deep-fg)}
           <div class="po-cta">
             <a class="btn btn-accent" href="https://calendar.app.google/SPsvB2McYiCYPJ649" target="_blank" rel="noopener">Termin u Kuby <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
           </div>
+          <p class="po-alt">W kalendarzu rezerwujesz godzinę, a długość (45 lub 60 min) podajesz przy rezerwacji.</p>
           <p class="po-alt">Nie pasuje żaden termin? <a href="https://calendar.app.google/zg8dq89M7FT8zJiC8" target="_blank" rel="noopener">Zobacz terminy Jakuba</a></p>
         </div>
       </div>
@@ -799,7 +800,7 @@ footer a:hover{color:var(--deep-fg)}
           </details>
           <details>
             <summary>Ile trwa lekcja?<span class="ic" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></summary>
-            <p>45 albo 60 minut, do wyboru przy rezerwacji. Dzieciom i osobom, które dopiero zaczynają, polecamy 45 minut: mniej zmęczenia i więcej chęci na kolejną lekcję.</p>
+            <p>45 albo 60 minut. W kalendarzu rezerwujesz godzinę, a długość lekcji podajesz przy rezerwacji. Przy 45 minutach reszta godziny to czas na przebranie. Dzieciom i osobom, które dopiero zaczynają, polecamy 45 minut: mniej zmęczenia i więcej chęci na kolejną lekcję.</p>
           </details>
           <details>
             <summary>Czy bilet na basen jest w cenie zajęć?<span class="ic" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></summary>
@@ -950,7 +951,7 @@ footer a:hover{color:var(--deep-fg)}
 
   /* dobierz zajęcia */
   var L1="https://calendar.app.google/zg8dq89M7FT8zJiC8", L2="https://calendar.app.google/SPsvB2McYiCYPJ649";
-  /* strony rezerwacji 45 min: wpisać linki, wtedy pojawią się przyciski 45 / 60 min */
+  /* osobne strony 45 min wymagają płatnego planu Google; na razie puste = jedna strona na instruktora, długość podawana przy rezerwacji */
   var L1_45="", L2_45="";
   var ARROW='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
   var state={who:"dorosly",goal:"nauka"};
@@ -985,7 +986,7 @@ footer a:hover{color:var(--deep-fg)}
       } else { who="Poprowadzi Jakub."; cta=bJ; }
     }
     out.classList.remove("swap"); void out.offsetWidth;
-    out.innerHTML='<p class="label">Proponuję</p><h4>'+esc(h)+'</h4><p>'+esc(p)+'</p><p class="po-price">'+esc(price)+'</p><p class="po-who">'+esc(who)+'</p><div class="po-cta">'+cta+'</div>'+(alt?'<p class="po-alt">'+alt+'</p>':'');
+    out.innerHTML='<p class="label">Proponuję</p><h4>'+esc(h)+'</h4><p>'+esc(p)+'</p><p class="po-price">'+esc(price)+'</p><p class="po-who">'+esc(who)+'</p><div class="po-cta">'+cta+'</div>'+(state.goal!=="psp"&&!L1_45?'<p class="po-alt">W kalendarzu rezerwujesz godzinę, a długość (45 lub 60 min) podajesz przy rezerwacji.</p>':'')+(alt?'<p class="po-alt">'+alt+'</p>':'');
     out.classList.add("swap");
   }
   document.querySelectorAll(".opt").forEach(function(b){
