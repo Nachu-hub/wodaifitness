@@ -432,6 +432,14 @@ p{margin:0}
 .rules div:last-child{border-bottom:0;padding-bottom:0}
 .rules dt{font-weight:600}
 .rules dd{margin:2px 0 0;color:var(--muted);font-size:.95rem}
+.rules-lead{margin:0 0 4px;color:var(--muted);font-size:.95rem}
+.tl{margin:14px 0 8px}
+.tl figcaption{font-size:.82rem;font-weight:600;color:var(--fg);margin-bottom:8px}
+.tl-bar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.tl-bar > div{padding:10px 12px;display:flex;flex-direction:column;gap:2px;font-size:.85rem;line-height:1.3;color:var(--fg)}
+.tl-bar b{font-weight:700}
+.tl-ok{background:rgba(22,163,74,.14)}
+.tl-pay{background:rgba(220,38,38,.12);border-left:2px solid rgba(220,38,38,.45)}
 @media (max-width:900px){.pricing{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:460px){.rules{padding:22px 18px}.r .p{font-size:1.35rem}}
 
@@ -712,12 +720,20 @@ footer a:hover{color:var(--deep-fg)}
           <div class="r"><span class="n">Abonament miesięczny</span><span class="p">od 430 zł</span><span class="d">Od 2 spotkań w miesiącu. Liczba spotkań rośnie bliżej egzaminu.</span></div>
         </div>
         <aside class="rules" id="zasady">
-          <h3 class="cond">Zasady</h3>
+          <h3 class="cond">Odwoływanie lekcji</h3>
+          <p class="rules-lead">Wystarczy SMS albo telefon do instruktora. Liczy się jedno: czy dajesz znać co najmniej 24 godziny przed lekcją.</p>
+          <figure class="tl" aria-label="Przykład: lekcja w środę o 17:00">
+            <figcaption>Przykład: lekcja jest w środę o 17:00</figcaption>
+            <div class="tl-bar">
+              <div class="tl-ok"><b>Do wtorku 17:00</b><span>odwołujesz za darmo</span></div>
+              <div class="tl-pay"><b>Po wtorku 17:00</b><span>lekcja jest płatna</span></div>
+            </div>
+          </figure>
           <dl>
-            <div><dt>Odwołujesz najpóźniej 24 h przed lekcją</dt><dd>Nic nie płacisz, umawiamy nowy termin. Przykład: lekcja w środę o 17:00, odwołujesz do wtorku do 17:00.</dd></div>
-            <div><dt>Odwołujesz później albo nie przychodzisz</dt><dd>Płacisz za lekcję tak, jakby się odbyła. Jeśli masz pakiet, ta lekcja z niego przepada.</dd></div>
-            <div><dt>Odwołuje instruktor</dt><dd>Nic nie płacisz, umawiamy nowy termin.</dd></div>
-            <div><dt>Abonament (test do straży)</dt><dd>Spotkanie odwołane co najmniej 24 h wcześniej przechodzi na kolejny miesiąc.</dd></div>
+            <div><dt>Odwołasz co najmniej 24 h przed lekcją</dt><dd>Nic nie płacisz. Umawiamy inny termin.</dd></div>
+            <div><dt>Odwołasz w ostatniej chwili (mniej niż 24 h przed) albo nie przyjdziesz</dt><dd>Płacisz za tę lekcję. Jeśli masz pakiet, odliczamy ją z pakietu: z 5 lekcji zostają Ci 4.</dd></div>
+            <div><dt>Lekcję odwoła instruktor</dt><dd>Nic nie płacisz. Umawiamy inny termin.</dd></div>
+            <div><dt>Abonament na test do straży</dt><dd>Spotkanie odwołane co najmniej 24 h wcześniej nie przepada, tylko przechodzi na kolejny miesiąc.</dd></div>
           </dl>
         </aside>
       </div>
@@ -824,7 +840,7 @@ footer a:hover{color:var(--deep-fg)}
           </details>
           <details>
             <summary>Jak odwołać lekcję?<span class="ic" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></summary>
-            <p>Napisz SMS albo zadzwoń najpóźniej 24 h przed lekcją. Wtedy nic nie płacisz i umawiamy nowy termin. Jeśli odwołasz później albo nie przyjdziesz, lekcja jest płatna, a przy pakiecie przepada.</p>
+            <p>Napisz SMS albo zadzwoń do instruktora co najmniej 24 godziny przed lekcją. Przykład: lekcja w środę o 17:00, więc dajesz znać najpóźniej we wtorek do 17:00. Wtedy nic nie płacisz i umawiamy inny termin. Jeśli odwołasz później albo nie przyjdziesz, lekcja jest płatna, a przy pakiecie odliczamy ją z pakietu.</p>
           </details>
         </div>
       </div>
