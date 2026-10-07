@@ -118,6 +118,7 @@ p{margin:0}
 .btn-navy{background:var(--brand-navy);color:#FFFFFF}
 .btn-navy:hover{transform:translateY(-1px)}
 .btn-accent:hover{transform:translateY(-1px)}
+.btn-j:hover,.btn-k:hover{transform:translateY(-1px)}
 .btn-line{border-color:var(--deep-line);color:var(--deep-fg)}
 .btn-line:hover{border-color:var(--deep-fg)}
 .btn-sm{padding:11px 18px;font-size:.92rem}
@@ -438,6 +439,27 @@ p{margin:0}
 .r .p{font-family:var(--display);font-stretch:75%;font-variation-settings:"wdth" 75;font-weight:800;font-size:1.6rem;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
 .r .d{grid-column:1 / -1;color:var(--muted);font-size:var(--fs-sm)}
 .pair-note{margin:14px 0 4px;padding:12px 14px;border-left:3px solid var(--accent);background:var(--line);border-radius:0 8px 8px 0;font-size:var(--fs-sm);color:var(--fg)}
+/* instruktorzy: kolor = tor */
+:root{--jakub:#2F6BFF;--on-jakub:#FFFFFF;--kuba:#FF8A1F;--on-kuba:#0B1A33}
+.who{display:inline-flex;align-items:center;gap:7px;padding:3px 11px 3px 3px;border-radius:999px;font-weight:600;font-size:.86rem;line-height:1.25;white-space:nowrap;vertical-align:middle}
+.who img{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 2px rgba(255,255,255,.85)}
+.who-j{background:var(--jakub);color:var(--on-jakub)}.who-k{background:var(--kuba);color:var(--on-kuba)}
+.item .by{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.item .by .or{font-size:.85rem;color:var(--muted)}
+.btn-j{background:var(--jakub);color:var(--on-jakub)}.btn-k{background:var(--kuba);color:var(--on-kuba)}
+.btn .bface{width:28px;height:28px;border-radius:50%;object-fit:cover;margin:-6px 0 -6px -10px;box-shadow:0 0 0 2px rgba(255,255,255,.9)}
+.rope{--c:var(--accent);height:12px;background:radial-gradient(circle at 6px 6px,var(--c) 0 4.5px,transparent 5px) 0 0/15px 12px;background-repeat:space no-repeat}
+.rope-j{--c:var(--jakub)}.rope-k{--c:var(--kuba)}
+.who-legend{margin-top:22px;display:flex;flex-direction:column;gap:12px}
+.who-legend .intro{font-weight:600;color:var(--fg)}
+.who-legend ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px}
+.who-legend li{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--muted)}
+.tcard>.rope,.coach-card>.rope{flex:none}
+.coach-card>.rope{margin:-30px -30px 6px}
+.tname{display:flex;align-items:center;gap:12px}
+.tname .dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot-j{background:var(--jakub)}.dot-k{background:var(--kuba)}
+@media (max-width:640px){.coach-card>.rope{margin:-24px -20px 4px}}
 .tag{display:inline-block;margin-left:8px;padding:3px 9px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:.72rem;font-weight:600;vertical-align:3px;white-space:nowrap}
 .rules{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:28px}
 .rules h3{font-size:1.6rem;line-height:1;margin-bottom:8px}
@@ -574,25 +596,32 @@ footer a:hover{color:var(--deep-fg)}
         <p class="label">Zajęcia</p>
         <h2 class="cond">Wybierz swój cel</h2>
         <p>Zajęcia 1:1. Każdy z nas prowadzi to, w czym jest najlepszy, w tej samej cenie i na tych samych zasadach.</p>
+        <div class="who-legend">
+          <p class="intro">Jakub i Kuba to dwie różne osoby. Kolor podpowiada, kto prowadzi zajęcia:</p>
+          <ul>
+            <li><span class="who who-k"><img src="img/twarz-kuba.jpg" alt="" width="56" height="56">Kuba Strządała</span>dzieci od 6 lat i dorośli od zera</li>
+            <li><span class="who who-j"><img src="img/twarz-jakub.jpg" alt="" width="56" height="56">Jakub Nachyła</span>technika, triathlon, test do straży</li>
+          </ul>
+        </div>
       </div>
       <div class="offer">
         <article class="item">
-          <div><h3 class="cond">Nauka pływania: dzieci i dorośli od zera</h3><p class="by">Prowadzi: <b>Kuba</b></p></div>
+          <div><h3 class="cond">Nauka pływania: dzieci i dorośli od zera</h3><p class="by">Prowadzi <span class="who who-k"><img src="img/twarz-kuba.jpg" alt="" width="56" height="56">Kuba Strządała</span></p></div>
           <p>Dzieci od 6 lat na każdym poziomie (młodsze na lekcję próbną) i dorośli, którzy dopiero zaczynają albo boją się wody. Oswojenie z wodą, pierwsze style, potem technika. Bez grupy, w tempie ucznia. Dzieciom polecamy lekcje 45-minutowe.</p>
           <div class="price"><b>od 120 zł</b><span>45 lub 60 min</span></div>
         </article>
         <article class="item">
-          <div><h3 class="cond">Doskonalenie techniki</h3><p class="by">Prowadzi: <b>Jakub</b>, a gdy brakuje terminów: <b>Kuba</b></p></div>
+          <div><h3 class="cond">Doskonalenie techniki</h3><p class="by">Prowadzi <span class="who who-j"><img src="img/twarz-jakub.jpg" alt="" width="56" height="56">Jakub Nachyła</span><span class="or">a gdy brakuje terminów</span><span class="who who-k"><img src="img/twarz-kuba.jpg" alt="" width="56" height="56">Kuba Strządała</span></p></div>
           <p>Dla dorosłych, którzy już przepłyną basen. Oddech, ułożenie ciała i praca ramion, żeby pływać dłużej i z mniejszym wysiłkiem.</p>
           <div class="price"><b>od 120 zł</b><span>45 lub 60 min</span></div>
         </article>
         <article class="item">
-          <div><h3 class="cond">Kraul dla triathlonistów</h3><p class="by">Prowadzi: <b>Jakub</b></p></div>
+          <div><h3 class="cond">Kraul dla triathlonistów</h3><p class="by">Prowadzi <span class="who who-j"><img src="img/twarz-jakub.jpg" alt="" width="56" height="56">Jakub Nachyła</span></p></div>
           <p>Oddech, ułożenie ciała, praca ramion. Pływasz ekonomiczniej i wychodzisz z wody z siłami na rower. Sam startuję na dystansie 70.3, więc wiem, czego potrzebujesz na starcie.</p>
           <div class="price"><b>od 120 zł</b><span>45 lub 60 min</span></div>
         </article>
         <article class="item">
-          <div><h3 class="cond">Test sprawnościowy do straży</h3><p class="by">Prowadzi: <b>Jakub</b></p></div>
+          <div><h3 class="cond">Test sprawnościowy do straży</h3><p class="by">Prowadzi <span class="who who-j"><img src="img/twarz-jakub.jpg" alt="" width="56" height="56">Jakub Nachyła</span></p></div>
           <p>Część lądowa i pływanie. Zaczynamy od diagnostyki (280 zł), potem prowadzę Cię w abonamencie miesięcznym aż do egzaminu.</p>
           <div class="price"><b>od 430 zł</b><span>miesięcznie</span></div>
         </article>
@@ -624,12 +653,12 @@ footer a:hover{color:var(--deep-fg)}
           <h4>Nauka pływania od podstaw</h4>
           <p>Od pierwszego wejścia do wody do swobodnego pływania. Bez grupy, w Twoim tempie i bez oceniania.</p>
           <p class="po-price">45 min 120 zł · 60 min 140 zł</p>
-          <p class="po-who">Poprowadzi Kuba. Cena i zasady takie same jak u Jakuba.</p>
+          <p class="po-who">Poprowadzi <span class="who who-k"><img src="img/twarz-kuba.jpg" alt="" width="56" height="56">Kuba Strządała</span></p>
           <div class="po-cta">
-            <a class="btn btn-accent" href="https://calendar.app.google/XdePtHMeZuQZpZiy5" target="_blank" rel="noopener">Termin u Kuby <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+            <a class="btn btn-k" href="https://calendar.app.google/XdePtHMeZuQZpZiy5" target="_blank" rel="noopener"><img class="bface" src="img/twarz-kuba.jpg" alt="" width="56" height="56">Termin u Kuby <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
           </div>
           <p class="po-alt">W kalendarzu rezerwujesz godzinę, a długość (45 lub 60 min) podajesz przy rezerwacji.</p>
-          <p class="po-alt">Nie pasuje żaden termin? <a href="https://calendar.app.google/oh15gMd5uZZ4uTGr5" target="_blank" rel="noopener">Zobacz terminy Jakuba</a></p>
+          <p class="po-alt">Nie pasuje żaden termin? <a href="https://calendar.app.google/oh15gMd5uZZ4uTGr5" target="_blank" rel="noopener">Zobacz terminy Jakuba Nachyły</a></p>
         </div>
       </div>
     </div>
@@ -641,33 +670,35 @@ footer a:hover{color:var(--deep-fg)}
       <div class="team-head">
         <p class="label">Trenerzy</p>
         <h2 class="cond">Dwóch instruktorów, jeden standard</h2>
-        <p>Zajęcia 1:1, ta sama cena i te same zasady. Każdy prowadzi to, w czym jest najlepszy.</p>
+        <p>Zajęcia 1:1, ta sama cena i te same zasady. Każdy prowadzi to, w czym jest najlepszy. Jakub i Kuba to dwie różne osoby, więc każdy ma swój kolor: Jakub niebieski, Kuba pomarańczowy.</p>
       </div>
       <div class="team-grid">
-        <article class="tcard">
+        <article class="tcard tcard-j">
+          <div class="rope rope-j" aria-hidden="true"></div>
           <figure class="tphoto"><img src="img/trener-jakub.jpg" alt="Jakub Nachyła w koszulce Woda &amp; Fitness na krytej pływalni" width="800" height="1000" loading="lazy" style="object-position:50% 22%"></figure>
           <div class="tbody">
             <p class="label">Założyciel Woda &amp; Fitness</p>
-            <h3 class="cond">Jakub Nachyła</h3>
+            <h3 class="cond tname"><span class="dot dot-j" aria-hidden="true"></span>Jakub Nachyła</h3>
             <ul class="creds" aria-label="Uprawnienia Jakuba">
               <li>Instruktor sportu – pływanie</li><li>Ratownik wodny WOPR</li><li>Płetwonurek SDI Open Water</li><li>Sternik motorowodny</li><li>Instruktor narciarstwa</li><li>Strażak</li>
             </ul>
             <p>Woda &amp; Fitness to mój projekt życiowy. Wyrósł z lat spędzonych w klubie pływackim i z miłości do wody. Dziś startuję w triathlonie, na co dzień pracuję jako strażak, a na basenie pomagam ludziom poczuć się w wodzie pewnie i swobodnie: w ich tempie, bez pośpiechu i bez oceniania.</p>
             <p class="tfor">Prowadzi: doskonalenie techniki dorosłych, kraul dla triathlonistów, test do straży.</p>
-            <a class="btn btn-accent" href="https://calendar.app.google/oh15gMd5uZZ4uTGr5" target="_blank" rel="noopener">Zarezerwuj u Jakuba <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+            <a class="btn btn-j" href="https://calendar.app.google/oh15gMd5uZZ4uTGr5" target="_blank" rel="noopener"><img class="bface" src="img/twarz-jakub.jpg" alt="" width="56" height="56">Zarezerwuj u Jakuba <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
           </div>
         </article>
-        <article class="tcard">
+        <article class="tcard tcard-k">
+          <div class="rope rope-k" aria-hidden="true"></div>
           <figure class="tphoto"><img src="img/trener-kuba.jpg" alt="Kuba Strządała w piance na plaży z bojką ratowniczą" width="800" height="1000" loading="lazy" style="object-position:50% 12%"></figure>
           <div class="tbody">
             <p class="label">Instruktor Woda &amp; Fitness</p>
-            <h3 class="cond">Kuba Strządała</h3>
+            <h3 class="cond tname"><span class="dot dot-k" aria-hidden="true"></span>Kuba Strządała</h3>
             <ul class="creds" aria-label="Doświadczenie Kuby">
               <li>Instruktor pływania</li><li>Dzieci od 6 lat</li><li>SMS Oświęcim</li><li>Starty w Mistrzostwach Polski</li><li>128 medali · 14 pucharów</li>
             </ul>
             <p>Pływa od piątego roku życia, a w pierwszych zawodach wystartował rok później. Zaczynał w UMKS Goczałkowice, potem reprezentował MUKS Gilus Gilowice, a przez całe liceum trenował w Szkole Mistrzostwa Sportowego w Oświęcimiu, startując w Mistrzostwach Polski i Małopolski. Jego mocna strona: technikę tłumaczy prostymi słowami, tak że od razu wiadomo, co poprawić.</p>
             <p class="tfor">Prowadzi: dzieci od 6 lat (każdy poziom; młodsze na lekcję próbną), dorosłych od zera, a gdy u Jakuba brakuje terminów, także doskonalenie techniki.</p>
-            <a class="btn btn-accent" href="https://calendar.app.google/XdePtHMeZuQZpZiy5" target="_blank" rel="noopener">Zarezerwuj u Kuby <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+            <a class="btn btn-k" href="https://calendar.app.google/XdePtHMeZuQZpZiy5" target="_blank" rel="noopener"><img class="bface" src="img/twarz-kuba.jpg" alt="" width="56" height="56">Zarezerwuj u Kuby <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
           </div>
         </article>
       </div>
@@ -845,7 +876,7 @@ footer a:hover{color:var(--deep-fg)}
         <div class="list">
           <details>
             <summary>Do kogo się zapisać?<span class="ic" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></summary>
-            <p>Dzieci od 6 lat (młodsze na lekcję próbną) i dorośli, którzy dopiero zaczynają: do Kuby. Dorośli, którzy już przepłyną basen i chcą poprawić technikę, triathloniści i test do straży: do Jakuba. Jeśli u Kuby nie pasuje Ci żaden termin, zapisz się do Jakuba, a przy doskonaleniu techniki działa to też w drugą stronę. Cena i zasady są takie same.</p>
+            <p>Uwaga, mamy dwóch Jakubów: Jakuba Nachyłę (na stronie na niebiesko) i Kubę Strządałę (na pomarańczowo). Dzieci od 6 lat (młodsze na lekcję próbną) i dorośli, którzy dopiero zaczynają: do Kuby. Dorośli, którzy już przepłyną basen i chcą poprawić technikę, triathloniści i test do straży: do Jakuba. Jeśli u Kuby nie pasuje Ci żaden termin, zapisz się do Jakuba, a przy doskonaleniu techniki działa to też w drugą stronę. Cena i zasady są takie same.</p>
           </details>
           <details>
             <summary>Moje dziecko ma 5 lat. Może zacząć?<span class="ic" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></summary>
@@ -867,7 +898,7 @@ footer a:hover{color:var(--deep-fg)}
           </details>
           <details>
             <summary>Nie umiem pływać. Mogę zacząć?<span class="ic" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></summary>
-            <p>Tak. Dorosłych od zera prowadzi Kuba: zaczynacie od oswojenia z wodą i podstaw, w tempie, które Ci odpowiada.</p>
+            <p>Tak. Dorosłych od zera prowadzi Kuba Strządała: zaczynacie od oswojenia z wodą i podstaw, w tempie, które Ci odpowiada.</p>
           </details>
           <details>
             <summary>Co zabrać na zajęcia?<span class="ic" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></summary>
@@ -894,22 +925,24 @@ footer a:hover{color:var(--deep-fg)}
     <div>
       <p class="label">Rezerwacja</p>
       <h2 class="cond">Zarezerwuj pierwszą lekcję</h2>
-      <p class="lead">Ta sama cena i zasady u obu instruktorów. Dzieci i dorośli od zera: Kuba. Technika, triathlon i test do straży: Jakub. Brak pasującego terminu? Sprawdź kalendarz drugiego albo zadzwoń.</p>
+      <p class="lead">Ta sama cena i zasady u obu instruktorów. Dzieci i dorośli od zera: Kuba Strządała (pomarańczowy). Technika, triathlon i test do straży: Jakub Nachyła (niebieski). Brak pasującego terminu? Sprawdź kalendarz drugiego albo zadzwoń.</p>
     </div>
     <div class="coaches">
       <article class="coach-card">
+        <div class="rope rope-j" aria-hidden="true"></div>
         <p class="k">Założyciel Woda &amp; Fitness</p>
-        <h3 class="cond">Jakub Nachyła</h3>
+        <h3 class="cond tname"><span class="dot dot-j" aria-hidden="true"></span>Jakub Nachyła</h3>
         <p>Doskonalenie techniki dorosłych, kraul dla triathlonistów, test sprawnościowy do straży.</p>
-        <a class="btn btn-accent" href="https://calendar.app.google/oh15gMd5uZZ4uTGr5" target="_blank" rel="noopener">Zarezerwuj u Jakuba
+        <a class="btn btn-j" href="https://calendar.app.google/oh15gMd5uZZ4uTGr5" target="_blank" rel="noopener"><img class="bface" src="img/twarz-jakub.jpg" alt="" width="56" height="56">Zarezerwuj u Jakuba
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
         </a>
       </article>
       <article class="coach-card">
+        <div class="rope rope-k" aria-hidden="true"></div>
         <p class="k">Instruktor Woda &amp; Fitness</p>
-        <h3 class="cond">Kuba Strządała</h3>
+        <h3 class="cond tname"><span class="dot dot-k" aria-hidden="true"></span>Kuba Strządała</h3>
         <p>Dzieci od 6 lat na każdym poziomie (młodsze na lekcję próbną) i dorośli, którzy dopiero zaczynają.</p>
-        <a class="btn btn-accent" href="https://calendar.app.google/XdePtHMeZuQZpZiy5" target="_blank" rel="noopener">Zarezerwuj u Kuby
+        <a class="btn btn-k" href="https://calendar.app.google/XdePtHMeZuQZpZiy5" target="_blank" rel="noopener"><img class="bface" src="img/twarz-kuba.jpg" alt="" width="56" height="56">Zarezerwuj u Kuby
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
         </a>
       </article>
@@ -1013,6 +1046,8 @@ footer a:hover{color:var(--deep-fg)}
   var L1="https://calendar.app.google/oh15gMd5uZZ4uTGr5", L2="https://calendar.app.google/XdePtHMeZuQZpZiy5";
   /* osobne strony 45 min wymagają płatnego planu Google; na razie puste = jedna strona na instruktora, długość podawana przy rezerwacji */
   var L1_45="", L2_45="";
+  var WJ='<span class="who who-j"><img src="img/twarz-jakub.jpg" alt="" width="56" height="56">Jakub Nachyła</span>', WK='<span class="who who-k"><img src="img/twarz-kuba.jpg" alt="" width="56" height="56">Kuba Strządała</span>';
+  var FACE={j:"img/twarz-jakub.jpg",k:"img/twarz-kuba.jpg"};
   var ARROW='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
   var state={who:"dorosly",goal:"nauka"};
   var out=document.getElementById("picker-out");
@@ -1022,35 +1057,35 @@ footer a:hover{color:var(--deep-fg)}
     dorosly:{nauka:["Nauka pływania od podstaw","Od pierwszego wejścia do wody do swobodnego pływania. Bez grupy, w Twoim tempie i bez oceniania."],
              technika:["Doskonalenie techniki","Oddech, ułożenie ciała, praca ramion. Pływasz dłużej i z mniejszym wysiłkiem."]}
   };
+  function btn(href,label,k){ return '<a class="btn btn-'+k+'" href="'+href+'" target="_blank" rel="noopener"><img class="bface" src="'+FACE[k]+'" alt="" width="56" height="56">'+label+' '+ARROW+'</a>'; }
   function esc(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
   function render(){
     var h,p,price,who,cta,alt="",alt2="";
     if(state.goal==="tri"){
       h="Kraul dla triathlonistów"; p="Oddech, ułożenie ciała i ekonomia ruchu. Wychodzisz z wody z siłami na rower. Prowadzę sam, bo startuję na dystansie 70.3.";
-      price="60 min 140 zł (polecamy) · 45 min 120 zł"; who="Poprowadzi Jakub.";
-      cta='<a class="btn btn-accent" href="'+L1+'" target="_blank" rel="noopener">'+(L1_45?'60 min u Jakuba ':'Termin u Jakuba ')+ARROW+'</a>'+(L1_45?'<a class="btn btn-accent" href="'+L1_45+'" target="_blank" rel="noopener">45 min u Jakuba '+ARROW+'</a>':'');
+      price="60 min 140 zł (polecamy) · 45 min 120 zł"; who="Poprowadzi "+WJ;
+      cta=btn(L1,(L1_45?'60 min u Jakuba':'Termin u Jakuba'),'j')+(L1_45?btn(L1_45,'45 min u Jakuba','j'):'');
     } else if(state.goal==="psp"){
       h="Test sprawnościowy do straży"; p="Część lądowa i pływanie. Zaczynamy od diagnostyki, potem plan aż do egzaminu.";
-      price="diagnostyka 280 zł · potem od 430 zł / mies."; who="Poprowadzi Jakub, czynny strażak.";
-      cta='<a class="btn btn-accent" href="'+L1+'" target="_blank" rel="noopener">Umów diagnostykę '+ARROW+'</a>';
+      price="diagnostyka 280 zł · potem od 430 zł / mies."; who="Poprowadzi "+WJ+"<span>, czynny strażak</span>";
+      cta=btn(L1,'Umów diagnostykę','j');
     } else {
       var t=TXT[state.who][state.goal]; h=t[0]; p=t[1];
       price=state.who==="dziecko"?"45 min 120 zł (polecamy) · 60 min 140 zł":"45 min 120 zł · 60 min 140 zł";
-      function btn(href,label){ return '<a class="btn btn-accent" href="'+href+'" target="_blank" rel="noopener">'+label+' '+ARROW+'</a>'; }
-      var bJ=L1_45 ? btn(L1_45,"45 min u Jakuba")+btn(L1,"60 min u Jakuba") : btn(L1,"Termin u Jakuba");
-      var bK=L2_45 ? (state.who==="dziecko" ? btn(L2_45,"45 min u Kuby")+btn(L2,"60 min u Kuby") : btn(L2,"60 min u Kuby")+btn(L2_45,"45 min u Kuby")) : btn(L2,"Termin u Kuby");
+      var bJ=L1_45 ? btn(L1_45,"45 min u Jakuba","j")+btn(L1,"60 min u Jakuba","j") : btn(L1,"Termin u Jakuba","j");
+      var bK=L2_45 ? (state.who==="dziecko" ? btn(L2_45,"45 min u Kuby","k")+btn(L2,"60 min u Kuby","k") : btn(L2,"60 min u Kuby","k")+btn(L2_45,"45 min u Kuby","k")) : btn(L2,"Termin u Kuby","k");
       if(state.who==="dziecko" || state.goal==="nauka"){
-        who="Poprowadzi Kuba. Cena i zasady takie same jak u Jakuba."; cta=bK;
+        who="Poprowadzi "+WK; cta=bK;
         if(state.who==="dziecko") alt2='Dwoje dzieci na podobnym poziomie? Możliwa <a href="#cennik">lekcja w dwójkę</a>: 200 zł za 45 min, umawiana telefonicznie.';
         alt=L1_45 ? 'Nie pasuje żaden termin? Terminy Jakuba: <a href="'+L1_45+'" target="_blank" rel="noopener">45 min</a> · <a href="'+L1+'" target="_blank" rel="noopener">60 min</a>'
-                  : 'Nie pasuje żaden termin? <a href="'+L1+'" target="_blank" rel="noopener">Zobacz terminy Jakuba</a>';
+                  : 'Nie pasuje żaden termin? <a href="'+L1+'" target="_blank" rel="noopener">Zobacz terminy Jakuba Nachyły</a>';
       } else {
-        who="Poprowadzi Jakub."; cta=bJ;
-        alt='Nie pasuje żaden termin? <a href="'+L2+'" target="_blank" rel="noopener">Zobacz terminy Kuby</a>';
+        who="Poprowadzi "+WJ; cta=bJ;
+        alt='Nie pasuje żaden termin? <a href="'+L2+'" target="_blank" rel="noopener">Zobacz terminy Kuby Strządały</a>';
       }
     }
     out.classList.remove("swap"); void out.offsetWidth;
-    out.innerHTML='<p class="label">Proponuję</p><h4>'+esc(h)+'</h4><p>'+esc(p)+'</p><p class="po-price">'+esc(price)+'</p><p class="po-who">'+esc(who)+'</p><div class="po-cta">'+cta+'</div>'+(state.goal!=="psp"&&!L1_45?'<p class="po-alt">W kalendarzu rezerwujesz godzinę, a długość (45 lub 60 min) podajesz przy rezerwacji.</p>':'')+(alt?'<p class="po-alt">'+alt+'</p>':'')+(alt2?'<p class="po-alt">'+alt2+'</p>':'');
+    out.innerHTML='<p class="label">Proponuję</p><h4>'+esc(h)+'</h4><p>'+esc(p)+'</p><p class="po-price">'+esc(price)+'</p><p class="po-who">'+who+'</p><div class="po-cta">'+cta+'</div>'+(state.goal!=="psp"&&!L1_45?'<p class="po-alt">W kalendarzu rezerwujesz godzinę, a długość (45 lub 60 min) podajesz przy rezerwacji.</p>':'')+(alt?'<p class="po-alt">'+alt+'</p>':'')+(alt2?'<p class="po-alt">'+alt2+'</p>':'');
     out.classList.add("swap");
   }
   document.querySelectorAll(".opt").forEach(function(b){
