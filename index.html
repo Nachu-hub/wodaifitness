@@ -441,19 +441,28 @@ p{margin:0}
 .pair-note{margin:14px 0 4px;padding:12px 14px;border-left:3px solid var(--accent);background:var(--line);border-radius:0 8px 8px 0;font-size:var(--fs-sm);color:var(--fg)}
 /* instruktorzy: kolor = tor */
 :root{--jakub:#2F6BFF;--on-jakub:#FFFFFF;--kuba:#FF8A1F;--on-kuba:#0B1A33}
-.who{display:inline-flex;align-items:center;gap:7px;padding:3px 11px 3px 3px;border-radius:999px;font-weight:600;font-size:.86rem;line-height:1.25;white-space:nowrap;vertical-align:middle}
-.who img{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 2px rgba(255,255,255,.85)}
-.who-j{background:var(--jakub);color:var(--on-jakub)}.who-k{background:var(--kuba);color:var(--on-kuba)}
+.who{--c:var(--accent);display:inline-flex;align-items:center;gap:8px;padding:2px 12px 2px 2px;border-radius:999px;font-weight:600;font-size:.86rem;line-height:1.25;white-space:nowrap;vertical-align:middle;color:var(--fg);border:1.5px solid var(--c);background:color-mix(in srgb,var(--c) 9%,transparent)}
+.who img{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none}
+.who-j{--c:var(--jakub)}.who-k{--c:var(--kuba)}
+.picker-out .who{color:var(--deep-fg)}
+.coach-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:-16px 0 40px}
+.cs{--c:var(--accent);display:flex;align-items:center;gap:18px;padding:20px 22px;border:1px solid var(--line);border-top:3px solid var(--c);border-radius:6px;background:var(--bg-2);color:var(--fg);text-decoration:none;transition:border-color .2s ease}
+.cs:hover{border-color:var(--c)}
+.cs:focus-visible{outline:3px solid var(--c);outline-offset:3px}
+.cs img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 3px var(--bg-2),0 0 0 6px var(--c)}
+.cs p{margin:0}
+.cs-name{font-family:var(--display);font-stretch:75%;font-variation-settings:"wdth" 75;font-weight:800;text-transform:uppercase;font-size:1.55rem;line-height:1;letter-spacing:.01em}
+.cs-role{margin-top:6px!important;font-size:.82rem;color:var(--muted)}
+.cs-for{margin-top:8px!important;font-size:.94rem;line-height:1.4}
+.cs-j{--c:var(--jakub)}.cs-k{--c:var(--kuba)}
+@media (max-width:820px){.coach-split{grid-template-columns:minmax(0,1fr);margin:-8px 0 28px}.cs{padding:16px 18px;gap:16px}.cs img{width:60px;height:60px}.cs-name{font-size:1.35rem}}
+@media (prefers-reduced-motion: reduce){.cs{transition:none}}
 .item .by{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .item .by .or{font-size:.85rem;color:var(--muted)}
 .btn-j{background:var(--jakub);color:var(--on-jakub)}.btn-k{background:var(--kuba);color:var(--on-kuba)}
 .btn .bface{width:28px;height:28px;border-radius:50%;object-fit:cover;margin:-6px 0 -6px -10px;box-shadow:0 0 0 2px rgba(255,255,255,.9)}
 .rope{--c:var(--accent);height:12px;background:radial-gradient(circle at 6px 6px,var(--c) 0 4.5px,transparent 5px) 0 0/15px 12px;background-repeat:space no-repeat}
 .rope-j{--c:var(--jakub)}.rope-k{--c:var(--kuba)}
-.who-legend{margin-top:22px;display:flex;flex-direction:column;gap:12px}
-.who-legend .intro{font-weight:600;color:var(--fg)}
-.who-legend ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px}
-.who-legend li{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--muted)}
 .tcard>.rope,.coach-card>.rope{flex:none}
 .coach-card>.rope{margin:-30px -30px 6px}
 .tname{display:flex;align-items:center;gap:12px}
@@ -596,13 +605,16 @@ footer a:hover{color:var(--deep-fg)}
         <p class="label">Zajęcia</p>
         <h2 class="cond">Wybierz swój cel</h2>
         <p>Zajęcia 1:1. Każdy z nas prowadzi to, w czym jest najlepszy, w tej samej cenie i na tych samych zasadach.</p>
-        <div class="who-legend">
-          <p class="intro">Jakub i Kuba to dwie różne osoby. Kolor podpowiada, kto prowadzi zajęcia:</p>
-          <ul>
-            <li><span class="who who-k"><img src="img/twarz-kuba.jpg" alt="" width="56" height="56">Kuba Strządała</span>dzieci od 6 lat i dorośli od zera</li>
-            <li><span class="who who-j"><img src="img/twarz-jakub.jpg" alt="" width="56" height="56">Jakub Nachyła</span>technika, triathlon, test do straży</li>
-          </ul>
-        </div>
+      </div>
+      <div class="coach-split">
+        <a class="cs cs-k" href="#trenerzy">
+          <img src="img/twarz-kuba.jpg" alt="Kuba Strządała" width="80" height="80">
+          <div><p class="cs-name">Kuba Strządała</p><p class="cs-role">Instruktor pływania</p><p class="cs-for">Prowadzi dzieci od 6 lat i dorosłych od zera</p></div>
+        </a>
+        <a class="cs cs-j" href="#trenerzy">
+          <img src="img/twarz-jakub.jpg" alt="Jakub Nachyła" width="80" height="80">
+          <div><p class="cs-name">Jakub Nachyła</p><p class="cs-role">Założyciel, instruktor sportu</p><p class="cs-for">Prowadzi doskonalenie techniki, triathlon i test do straży</p></div>
+        </a>
       </div>
       <div class="offer">
         <article class="item">
@@ -670,7 +682,7 @@ footer a:hover{color:var(--deep-fg)}
       <div class="team-head">
         <p class="label">Trenerzy</p>
         <h2 class="cond">Dwóch instruktorów, jeden standard</h2>
-        <p>Zajęcia 1:1, ta sama cena i te same zasady. Każdy prowadzi to, w czym jest najlepszy. Jakub i Kuba to dwie różne osoby, więc każdy ma swój kolor: Jakub niebieski, Kuba pomarańczowy.</p>
+        <p>Zajęcia 1:1, ta sama cena i te same zasady. Każdy prowadzi to, w czym jest najlepszy.</p>
       </div>
       <div class="team-grid">
         <article class="tcard tcard-j">
@@ -876,7 +888,7 @@ footer a:hover{color:var(--deep-fg)}
         <div class="list">
           <details>
             <summary>Do kogo się zapisać?<span class="ic" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></summary>
-            <p>Uwaga, mamy dwóch Jakubów: Jakuba Nachyłę (na stronie na niebiesko) i Kubę Strządałę (na pomarańczowo). Dzieci od 6 lat (młodsze na lekcję próbną) i dorośli, którzy dopiero zaczynają: do Kuby. Dorośli, którzy już przepłyną basen i chcą poprawić technikę, triathloniści i test do straży: do Jakuba. Jeśli u Kuby nie pasuje Ci żaden termin, zapisz się do Jakuba, a przy doskonaleniu techniki działa to też w drugą stronę. Cena i zasady są takie same.</p>
+            <p>Jakub Nachyła i Kuba Strządała to dwie różne osoby. Dzieci od 6 lat (młodsze na lekcję próbną) i dorośli, którzy dopiero zaczynają: do Kuby. Dorośli, którzy już przepłyną basen i chcą poprawić technikę, triathloniści i test do straży: do Jakuba. Jeśli u Kuby nie pasuje Ci żaden termin, zapisz się do Jakuba, a przy doskonaleniu techniki działa to też w drugą stronę. Cena i zasady są takie same.</p>
           </details>
           <details>
             <summary>Moje dziecko ma 5 lat. Może zacząć?<span class="ic" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></summary>
@@ -925,7 +937,7 @@ footer a:hover{color:var(--deep-fg)}
     <div>
       <p class="label">Rezerwacja</p>
       <h2 class="cond">Zarezerwuj pierwszą lekcję</h2>
-      <p class="lead">Ta sama cena i zasady u obu instruktorów. Dzieci i dorośli od zera: Kuba Strządała (pomarańczowy). Technika, triathlon i test do straży: Jakub Nachyła (niebieski). Brak pasującego terminu? Sprawdź kalendarz drugiego albo zadzwoń.</p>
+      <p class="lead">Ta sama cena i zasady u obu instruktorów. Dzieci i dorośli od zera: Kuba Strządała. Technika, triathlon i test do straży: Jakub Nachyła. Brak pasującego terminu? Sprawdź kalendarz drugiego albo zadzwoń.</p>
     </div>
     <div class="coaches">
       <article class="coach-card">
