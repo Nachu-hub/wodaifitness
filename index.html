@@ -461,14 +461,16 @@ p{margin:0}
 .item .by .or{font-size:.85rem;color:var(--muted)}
 .btn-j{background:var(--jakub);color:var(--on-jakub)}.btn-k{background:var(--kuba);color:var(--on-kuba)}
 .btn .bface{width:28px;height:28px;border-radius:50%;object-fit:cover;margin:-6px 0 -6px -10px;box-shadow:0 0 0 2px rgba(255,255,255,.9)}
-.rope{--c:var(--accent);height:12px;background:radial-gradient(circle at 6px 6px,var(--c) 0 4.5px,transparent 5px) 0 0/15px 12px;background-repeat:space no-repeat}
+.rope{--c:var(--accent);flex:none;height:4px;background:var(--c)}
 .rope-j{--c:var(--jakub)}.rope-k{--c:var(--kuba)}
 .tcard>.rope,.coach-card>.rope{flex:none}
-.coach-card>.rope{margin:-30px -30px 6px}
+.coach-card>.rope{margin:-30px -30px 14px}
+.coach-card{overflow:hidden}
+@media (max-width:420px){.btn:has(.bface){white-space:nowrap;font-size:.9rem;letter-spacing:.02em;gap:8px;padding-left:16px;padding-right:18px}.btn .bface{width:24px;height:24px;margin-left:-4px}}
 .tname{display:flex;align-items:center;gap:12px}
 .tname .dot{width:14px;height:14px;border-radius:50%;flex:none}
 .dot-j{background:var(--jakub)}.dot-k{background:var(--kuba)}
-@media (max-width:640px){.coach-card>.rope{margin:-24px -20px 4px}}
+@media (max-width:640px){.coach-card>.rope{margin:-24px -20px 12px}}
 .tag{display:inline-block;margin-left:8px;padding:3px 9px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:.72rem;font-weight:600;vertical-align:3px;white-space:nowrap}
 .rules{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:28px}
 .rules h3{font-size:1.6rem;line-height:1;margin-bottom:8px}
