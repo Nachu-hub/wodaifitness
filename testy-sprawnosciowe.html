@@ -642,6 +642,38 @@ footer a:hover{color:var(--deep-fg)}
 /* rezerwacja */
 .book .one{max-width:640px}
 .book .cta .call-line{border-color:var(--deep-line);color:var(--deep-fg)}
+
+/* ---------- kolorystyka podstrony: ląd, czyli tartan i żółte tyczki (strona główna zostaje przy wodzie) ---------- */
+:root{
+  --tartan:#9C3A2A;--pole:#F9D533;
+  --bg-2:#F6F2F1;--line:#ECE1DE;--link:#97301F;--brand-blue:#A93A27;
+  --deep:#561C16;--deep-2:#8E3527;--deep-fg:#FFFFFF;--deep-muted:#F2CEC4;--deep-line:rgba(255,255,255,.22);--deep-card:rgba(255,255,255,.08);
+  --accent:#F9D533;--on-accent:#1C0F0B;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#150C0A;--bg-2:#1F120F;--fg:#F4ECE9;--muted:#C6AEA7;--line:#3A2520;--link:#FFA48C;--brand-blue:#FF8E72;
+  --deep:#3D130E;--deep-2:#6E241A;--deep-muted:#EBC0B4;--accent:#F9D533;--on-accent:#1C0F0B;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#150C0A;--bg-2:#1F120F;--fg:#F4ECE9;--muted:#C6AEA7;--line:#3A2520;--link:#FFA48C;--brand-blue:#FF8E72;
+  --deep:#3D130E;--deep-2:#6E241A;--deep-muted:#EBC0B4;--accent:#F9D533;--on-accent:#1C0F0B;color-scheme:dark}
+.water{background:var(--deep)}
+.water::before{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='1' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 .75  0 0 0 0 .7  0 0 0 2.2 -1.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E"),radial-gradient(110% 80% at 80% 0%,var(--deep-2) 0%,transparent 70%),linear-gradient(175deg,var(--deep-2) 0%,var(--deep) 100%);background-size:180px 180px,240px 240px,auto,auto}
+.water::after{background:none}
+.hero::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='xMidYMid slice'%3E%3Ccircle cx='1185' cy='560' r='235' stroke='white' fill='none' stroke-width='5' stroke-opacity='.22'/%3E%3Cpath d='M620 900 L1440 250' stroke='white' fill='none' stroke-width='5' stroke-opacity='.22'/%3E%3Cpath d='M-40 470 C 300 520 560 600 760 900' stroke='white' fill='none' stroke-width='5' stroke-opacity='.10'/%3E%3C/svg%3E") center/cover no-repeat}
+.coach::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='xMidYMid slice'%3E%3Cpath d='M0 820 L1440 700' stroke='white' fill='none' stroke-width='5' stroke-opacity='.22'/%3E%3Cpath d='M0 120 L1440 40' stroke='white' fill='none' stroke-width='5' stroke-dasharray='30 22' stroke-opacity='.14'/%3E%3Ccircle cx='1340' cy='760' r='170' stroke='white' fill='none' stroke-width='5' stroke-opacity='.14'/%3E%3C/svg%3E") center/cover no-repeat}
+.book::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='xMidYMid slice'%3E%3Ccircle cx='1220' cy='420' r='250' stroke='white' fill='none' stroke-width='5' stroke-opacity='.22'/%3E%3Cpath d='M1220 0 L1220 900' stroke='white' fill='none' stroke-width='5' stroke-opacity='.16'/%3E%3Cpath d='M0 600 L1440 560' stroke='white' fill='none' stroke-width='5' stroke-dasharray='30 22' stroke-opacity='.14'/%3E%3C/svg%3E") center/cover no-repeat}
+.edge{position:absolute;left:0;right:0;height:5px;z-index:1;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(255,255,255,.7) 0 34px,transparent 34px 58px)}
+.edge.bottom{bottom:22px}.edge.top{top:22px}
+.btn-navy{background:var(--tartan);color:#FFFFFF}
+.btn-j{background:var(--accent);color:var(--on-accent)}
+.btn .bface{box-shadow:0 0 0 2px rgba(28,15,11,.85)}
+.hero .label::before{content:"";display:inline-block;width:4px;height:14px;margin-right:10px;vertical-align:-2px;border-radius:2px;background:var(--pole);box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.rl .info .ic{background:color-mix(in srgb,var(--brand-blue) 14%,transparent);color:var(--brand-blue)}
+.pair-note{background:var(--bg-2);border-left-color:var(--pole)}
+.path li{padding-left:24px}
+.path li::before{left:5px;top:.28em;width:4px;height:.95em;border-radius:2px;background:var(--pole);box-shadow:0 0 0 1px color-mix(in srgb,var(--fg) 25%,transparent)}
+.path li::after{content:"";position:absolute;left:1px;top:1.18em;width:12px;height:4px;border-radius:50%;background:var(--fg);opacity:.75}
+.swim-facts{border-top-color:var(--fg)}
 </style>
 </head>
 <body>
@@ -660,7 +692,6 @@ footer a:hover{color:var(--deep-fg)}
 
 <main id="start">
   <section class="water hero">
-    <canvas data-water="hero" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="hero-copy">
         <p class="label">Przygotowanie do służby · Goczałkowice-Zdrój i Pszczyna</p>
@@ -681,7 +712,7 @@ footer a:hover{color:var(--deep-fg)}
       </div>
       <figure class="hero-photo"><img src="img/testy-tor.jpg" alt="Żółte tyczki na tartanowym boisku przed testem sprawnościowym, na ziemi protokół z wynikami" width="800" height="1000" fetchpriority="high"></figure>
     </div>
-    <div class="wave bottom" aria-hidden="true"><svg viewBox="0 0 1440 46" preserveAspectRatio="none"><path d="M0 26C160 6 320 4 480 16s320 30 480 24 320-30 480-26V46H0z" fill="currentColor"/></svg></div>
+    <div class="edge bottom" aria-hidden="true"></div>
   </section>
 
   <section class="sec" id="proby">
@@ -776,7 +807,6 @@ footer a:hover{color:var(--deep-fg)}
   </section>
 
   <section class="water coach lead-coach" id="trener">
-    <canvas data-water="coach" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="coach-side">
         <figure class="portrait"><img src="img/trener-jakub.jpg" alt="Jakub Nachyła w koszulce Woda &amp; Fitness na krytej pływalni" width="800" height="1000" loading="lazy" style="object-position:50% 22%"></figure>
@@ -922,8 +952,7 @@ footer a:hover{color:var(--deep-fg)}
 </main>
 
 <section class="water book" id="rezerwacja">
-  <canvas data-water="book" aria-hidden="true"></canvas>
-  <div class="wave top" aria-hidden="true"><svg viewBox="0 0 1440 46" preserveAspectRatio="none"><path d="M0 26C160 6 320 4 480 16s320 30 480 24 320-30 480-26V46H0z" fill="currentColor"/></svg></div>
+  <div class="edge top" aria-hidden="true"></div>
   <div class="wrap">
     <div class="one">
       <p class="label">Zapisy</p>
@@ -1001,86 +1030,6 @@ footer a:hover{color:var(--deep-fg)}
   if(bar&&target&&("IntersectionObserver" in window)){
     new IntersectionObserver(function(es){ es.forEach(function(e){ bar.classList.toggle("hide", e.isIntersecting); }); },{threshold:0.15}).observe(target);
   }
-})();
-</script>
-<script>
-(function(){
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var VS = "attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
-  var FS = [
-    "precision mediump float;",
-    "uniform vec2 uR;uniform float uT;uniform float uFade;uniform float uGain;uniform vec3 uM;",
-    "vec2 h2(vec2 p){p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3)));return fract(sin(p)*43758.5453);}",
-    "float edge(vec2 p,float t){vec2 n=floor(p),f=fract(p);float d1=8.,d2=8.;",
-    " for(int j=-1;j<=1;j++){for(int i=-1;i<=1;i++){vec2 g=vec2(float(i),float(j));vec2 o=h2(n+g);",
-    "  o=.5+.42*sin(t+6.2831*o);vec2 r=g+o-f;float d=dot(r,r);",
-    "  if(d<d1){d2=d1;d1=d;}else if(d<d2){d2=d;}}}",
-    " return sqrt(d2)-sqrt(d1);}",
-    "void main(){",
-    " vec2 uv=gl_FragCoord.xy/uR.y; float x=gl_FragCoord.x/uR.x; float y=gl_FragCoord.y/uR.y;",
-    " float t=uT*.28; vec2 p=uv*6.5;",
-    " vec2 dm=(gl_FragCoord.xy-uM.xy)/uR.y; float dd=length(dm); float rip=uM.z*exp(-dd*dd*22.)*sin(dd*48.-uT*7.);",
-    " p+=normalize(dm+1e-4)*rip*.35;",
-    " p+=.22*vec2(sin(p.y*1.3+t*1.4),cos(p.x*1.1-t*1.2)); p+=.08*vec2(sin(p.y*3.7-t*2.),cos(p.x*3.1+t*1.7));",
-    " float e1=edge(p,t); float e2=edge(p*1.35+7.3,t*1.15+1.7);",
-    " float l=pow(smoothstep(.09,.0,e1),1.6)*.7+pow(smoothstep(.07,.0,e2),1.6)*.45; l+=l*l*.6;",
-    " l*=mix(uFade,1.,smoothstep(.15,.85,x));",
-    " vec3 deep=vec3(.031,.086,.18); vec3 mid=vec3(.047,.2,.40);",
-    " vec3 col=mix(deep,mid,.25+.55*y*(1.-x*.3));",
-    " col+=vec3(.5,.78,1.)*l*.24*uGain;",
-    " col+=vec3(.4,.7,1.)*max(rip,0.)*.10*uGain;",
-    " gl_FragColor=vec4(col,1.);}"
-  ].join("\n");
-
-  function setup(canvas){
-    var gl = canvas.getContext("webgl",{antialias:false,alpha:false,premultipliedAlpha:false});
-    if(!gl) return null;
-    function sh(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);return gl.getShaderParameter(s,gl.COMPILE_STATUS)?s:null;}
-    var v=sh(gl.VERTEX_SHADER,VS), f=sh(gl.FRAGMENT_SHADER,FS); if(!v||!f) return null;
-    var pr=gl.createProgram(); gl.attachShader(pr,v); gl.attachShader(pr,f); gl.linkProgram(pr);
-    if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) return null;
-    gl.useProgram(pr);
-    var b=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,b);
-    gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
-    var a=gl.getAttribLocation(pr,"a"); gl.enableVertexAttribArray(a); gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
-    var kind = canvas.getAttribute("data-water"); var fade = kind==="coach" ? 0.15 : 0.3; var gain = kind==="coach" ? 0.45 : 1.0;
-    return {gl:gl,uM:gl.getUniformLocation(pr,"uM"),mx:-9999,my:-9999,ms:0,mt:0,uR:gl.getUniformLocation(pr,"uR"),uT:gl.getUniformLocation(pr,"uT"),uF:gl.getUniformLocation(pr,"uFade"),uG:gl.getUniformLocation(pr,"uGain"),fade:fade,gain:gain,canvas:canvas,visible:true};
-  }
-  function size(s){
-    var scale=Math.min(window.devicePixelRatio||1,1.5)*0.6;
-    var w=Math.max(1,Math.round(s.canvas.clientWidth*scale)), h=Math.max(1,Math.round(s.canvas.clientHeight*scale));
-    if(s.canvas.width!==w||s.canvas.height!==h){s.canvas.width=w;s.canvas.height=h;}
-    s.gl.viewport(0,0,w,h);
-  }
-  function draw(s,t){
-    size(s); s.gl.uniform2f(s.uR,s.canvas.width,s.canvas.height); s.gl.uniform1f(s.uT,t); s.gl.uniform1f(s.uF,s.fade); s.gl.uniform1f(s.uG,s.gain); s.gl.uniform3f(s.uM,s.mx,s.my,s.ms);
-    s.gl.drawArrays(s.gl.TRIANGLE_STRIP,0,4);
-  }
-  var scenes=[];
-  document.querySelectorAll("canvas[data-water]").forEach(function(c){
-    try{ var s=setup(c); if(s){ scenes.push(s); draw(s,12.0); c.classList.add("on"); } }catch(e){}
-  });
-  if(!scenes.length) return;
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){scenes.forEach(function(s){if(s.canvas===e.target)s.visible=e.isIntersecting;});});});
-    scenes.forEach(function(s){io.observe(s.canvas);});
-  }
-  window.addEventListener("resize",function(){scenes.forEach(function(s){draw(s,12.0+(performance.now()/1000));});});
-  if(reduce) return;
-  scenes.forEach(function(s){
-    var host=s.canvas.parentElement;
-    host.addEventListener("pointermove",function(e){
-      var r=s.canvas.getBoundingClientRect(), k=s.canvas.width/Math.max(1,r.width);
-      s.mx=(e.clientX-r.left)*k; s.my=s.canvas.height-(e.clientY-r.top)*k; s.mt=1;
-    },{passive:true});
-    host.addEventListener("pointerleave",function(){ s.mt=0; },{passive:true});
-  });
-  var t0=performance.now();
-  (function loop(now){
-    var t=12.0+(now-t0)/1000;
-    scenes.forEach(function(s){ s.ms+=(s.mt-s.ms)*0.06; s.mt*=0.985; if(s.visible) draw(s,t); });
-    requestAnimationFrame(loop);
-  })(t0);
 })();
 </script>
 </body>
