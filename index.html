@@ -635,8 +635,8 @@ footer a:hover{color:var(--deep-fg)}
           <div class="price"><b>od 120 zł</b><span>45 lub 60 min</span></div>
         </article>
         <article class="item">
-          <div><h3 class="cond">Test sprawnościowy do straży</h3><p class="by">Prowadzi <span class="who who-j"><img src="img/twarz-jakub.jpg" alt="" width="56" height="56">Jakub Nachyła</span></p></div>
-          <p>Część lądowa i pływanie. Zaczynamy od diagnostyki (280 zł), potem prowadzę Cię w abonamencie miesięcznym aż do egzaminu.</p>
+          <div><h3 class="cond">Test sprawnościowy do służb</h3><p class="by">Prowadzi <span class="who who-j"><img src="img/twarz-jakub.jpg" alt="" width="56" height="56">Jakub Nachyła</span></p></div>
+          <p>Straż, policja i wojsko: część lądowa i pływanie. Zaczynamy od diagnostyki (280 zł), potem prowadzę Cię w abonamencie miesięcznym aż do egzaminu. <a href="testy-sprawnosciowe.html">Co jest na teście i jak pracujemy</a></p>
           <div class="price"><b>od 430 zł</b><span>miesięcznie</span></div>
         </article>
       </div>
@@ -658,7 +658,7 @@ footer a:hover{color:var(--deep-fg)}
               <button type="button" class="opt" id="opt-nauka" data-q="goal" data-v="nauka" aria-pressed="true">Nauka od podstaw</button>
               <button type="button" class="opt" id="opt-technika" data-q="goal" data-v="technika" aria-pressed="false">Lepsza technika</button>
               <button type="button" class="opt" id="opt-tri" data-q="goal" data-v="tri" aria-pressed="false">Triathlon</button>
-              <button type="button" class="opt" id="opt-psp" data-q="goal" data-v="psp" aria-pressed="false">Test do straży</button>
+              <button type="button" class="opt" id="opt-psp" data-q="goal" data-v="psp" aria-pressed="false">Test do służb</button>
             </div>
           </div>
         </div>
@@ -794,9 +794,9 @@ footer a:hover{color:var(--deep-fg)}
           <div class="r"><span class="n">Dwie osoby, 45 min</span><span class="p">200 zł</span><span class="d">100 zł za osobę. Dla rodzeństwa albo dzieci w podobnym wieku i na podobnym poziomie. Umawiana telefonicznie.</span></div>
           <div class="r"><span class="n">Dwie osoby, 60 min</span><span class="p">230 zł</span><span class="d">115 zł za osobę.</span></div>
           <p class="pair-note"><b>Polecamy jednak lekcje 1:1.</b> Dzieci zwykle rozwijają się w różnym tempie: jedno wyrywa do przodu, drugie potrzebuje więcej uwagi. Wtedy szybsze zwalnia, żeby wolniejsze nadążyło. Dwie osobne lekcje 45 min to 240 zł: tylko 40 zł więcej, a każde dziecko ma instruktora dla siebie.</p>
-          <div class="grp">Test sprawnościowy do straży pożarnej</div>
+          <div class="grp">Test sprawnościowy do służb mundurowych</div>
           <div class="r"><span class="n">Diagnostyka</span><span class="p">280 zł</span><span class="d">2 spotkania: poziom na lądzie i w wodzie, plan przygotowań</span></div>
-          <div class="r"><span class="n">Abonament miesięczny</span><span class="p">od 430 zł</span><span class="d">Od 2 spotkań w miesiącu. Liczba spotkań rośnie bliżej egzaminu.</span></div>
+          <div class="r"><span class="n">Abonament miesięczny</span><span class="p">od 430 zł</span><span class="d">Od 2 spotkań w miesiącu. Liczba spotkań rośnie bliżej egzaminu. <a href="testy-sprawnosciowe.html">Straż, policja, wojsko: szczegóły</a></span></div>
         </div>
         <aside class="rules" id="zasady">
           <h3 class="cond">Odwoływanie lekcji</h3>
@@ -980,7 +980,7 @@ footer a:hover{color:var(--deep-fg)}
 <footer>
   <div class="wrap">
     <span>Woda &amp; Fitness Jakub Nachyła</span>
-    <span>Lekcje pływania · Goczałkowice-Zdrój · © 2026 · <a href="polityka-prywatnosci.html">Polityka prywatności</a></span>
+    <span>Lekcje pływania · <a href="testy-sprawnosciowe.html">Testy sprawnościowe</a> · Goczałkowice-Zdrój · © 2026 · <a href="polityka-prywatnosci.html">Polityka prywatności</a></span>
   </div>
 </footer>
 
@@ -1084,9 +1084,10 @@ footer a:hover{color:var(--deep-fg)}
       price="60 min 140 zł (polecamy) · 45 min 120 zł"; who="Poprowadzi "+WJ;
       cta=btn(L1,(L1_45?'60 min u Jakuba':'Termin u Jakuba'),'j')+(L1_45?btn(L1_45,'45 min u Jakuba','j'):'');
     } else if(state.goal==="psp"){
-      h="Test sprawnościowy do straży"; p="Część lądowa i pływanie. Zaczynamy od diagnostyki, potem plan aż do egzaminu.";
+      h="Test sprawnościowy do służb"; p="Straż, policja i wojsko. Część lądowa i pływanie. Zaczynamy od diagnostyki, potem plan aż do egzaminu.";
       price="diagnostyka 280 zł · potem od 430 zł / mies."; who="Poprowadzi "+WJ+"<span>, czynny strażak</span>";
       cta=btn(L1,'Umów diagnostykę','j');
+      alt='Szczegóły: <a href="testy-sprawnosciowe.html">co jest na teście i jak pracujemy</a>';
     } else {
       var t=TXT[state.who][state.goal]; h=t[0]; p=t[1];
       price=state.who==="dziecko"?"45 min 120 zł (polecamy) · 60 min 140 zł":"45 min 120 zł · 60 min 140 zł";
