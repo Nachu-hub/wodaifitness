@@ -587,6 +587,20 @@ footer a:hover{color:var(--deep-fg)}
 @media (max-width:860px){.picker.js:not(.chosen) .picker-out{display:none}}
 .po-back{display:none;align-self:flex-start;font:inherit;font-size:.92rem;font-weight:600;color:var(--deep-fg);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 @media (max-width:860px){.po-back{display:block}}
+
+/* kalendarz osadzony (tylko komputer) */
+.picker-cal{grid-column:1/-1;background:#FFFFFF;color:#0B1A33;border-top:1px solid var(--line);padding:18px 22px 6px}
+.pc-head{display:flex;justify-content:space-between;align-items:center;gap:10px 16px;flex-wrap:wrap;margin-bottom:6px}
+.pc-title{margin:0;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pc-out{font-size:.92rem;font-weight:600;color:#0B1A33;text-underline-offset:3px}
+.pc-frame iframe{display:block;width:100%;height:1000px;border:0}
+@media (max-width:860px){.picker-cal{display:none!important}}
+/* przełącznik pojedyncza / pakiet */
+.po-toggle{display:inline-flex;align-self:flex-start;gap:3px;padding:3px;border:1.5px solid rgba(255,255,255,.35);border-radius:999px}
+.po-toggle button{font:inherit;font-size:.9rem;font-weight:600;padding:8px 15px;border-radius:999px;border:0;background:transparent;color:var(--deep-fg);cursor:pointer}
+.po-toggle button[aria-pressed="true"]{background:var(--deep-fg);color:var(--deep)}
+.po-toggle button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.picker-out .po-sub{font-size:.88rem;color:var(--deep-muted);opacity:1;margin-top:-8px}
 </style>
 </head>
 <body>
@@ -654,6 +668,10 @@ footer a:hover{color:var(--deep-fg)}
             <a class="btn btn-k" href="https://calendar.app.google/XdePtHMeZuQZpZiy5" target="_blank" rel="noopener"><img class="bface" src="img/twarz-kuba.jpg" alt="" width="56" height="56">Dziecko lub od zera <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
             <a class="btn btn-j" href="https://calendar.app.google/oh15gMd5uZZ4uTGr5" target="_blank" rel="noopener"><img class="bface" src="img/twarz-jakub.jpg" alt="" width="56" height="56">Technika i triathlon <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
           </div>
+        </div>
+        <div class="picker-cal" id="picker-cal" hidden>
+          <div class="pc-head"><p class="pc-title"></p><a class="pc-out" href="#" target="_blank" rel="noopener">Otwórz kalendarz w nowym oknie ↗</a></div>
+          <div class="pc-frame"></div>
         </div>
       </div>
       <div class="offer">
@@ -1076,47 +1094,71 @@ footer a:hover{color:var(--deep-fg)}
   var WJ='<span class="who who-j"><img src="img/twarz-jakub.jpg" alt="" width="56" height="56">Jakub Nachyła</span>', WK='<span class="who who-k"><img src="img/twarz-kuba.jpg" alt="" width="56" height="56">Kuba Strządała</span>';
   var FACE={j:"img/twarz-jakub.jpg",k:"img/twarz-kuba.jpg"};
   var ARROW='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
-  var state={who:null};
-  var out=document.getElementById("picker-out"), pk=document.getElementById("dobierz");
+  var state={who:null,pkg:false};
+  var out=document.getElementById("picker-out"), pk=document.getElementById("dobierz"), pc=document.getElementById("picker-cal");
+  var EMB={k:"https://calendar.google.com/calendar/appointments/schedules/AcZssZ1GHwEcdQ8Ak6Oux_ymi6aOMwKeFJ_EGhbKg-RToQY2Ih7EFewDdsqBOL1IBMdHO6XQx_b4T0Jl?gv=true",j:"https://calendar.google.com/calendar/appointments/schedules/AcZssZ3ZrIUXqaUkBnpbHWyr8IeXHsm0-k5RuqmqEyNsVcqcRkmqPQFRkKIck0vHacT2p7Oi2rsMgYbT?gv=true"}, LNK={k:L2,j:L1}, WHO={k:WK,j:WJ}, NAME={k:"Kuba Strządała",j:"Jakub Nachyła"}, calK=null;
   var LEN="W kalendarzu rezerwujesz godzinę, a długość (45 lub 60 min) podajesz przy rezerwacji.";
-  var P45="45\u00a0min 120\u00a0zł · 60\u00a0min 140\u00a0zł";
-  function btn(href,label,k){ return '<a class="btn btn-'+k+'" href="'+href+'" target="_blank" rel="noopener"><img class="bface" src="'+FACE[k]+'" alt="" width="56" height="56">'+label+' '+ARROW+'</a>'; }
+  var PKG="Pakiet płacisz z góry na pierwszej lekcji i jest ważny 10 tygodni od niej. W kalendarzu rezerwujesz pierwszą lekcję i dopisujesz „pakiet”, a kolejne terminy ustalacie na zajęciach.";
+  function desk(){ return window.matchMedia("(min-width:861px)").matches; }
+  function btn(href,label,k){ return '<a class="btn btn-'+k+'" href="'+href+'" target="_blank" rel="noopener" data-cta="'+k+'"><img class="bface" src="'+FACE[k]+'" alt="" width="56" height="56">'+label+' '+ARROW+'</a>'; }
   function esc(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
-  function link(href,t){return '<a href="'+href+'" target="_blank" rel="noopener">'+t+'</a>';}
+  function swap(k,t){return '<a href="'+LNK[k]+'" target="_blank" rel="noopener" data-cal="'+k+'">'+t+'</a>';}
   function setPressed(v){ document.querySelectorAll('.opt[data-q="who"]').forEach(function(o){ o.setAttribute("aria-pressed", o.getAttribute("data-v")===v?"true":"false"); }); }
+  function inst(){ return (state.who==="dziecko"||state.who==="zero")?"k":"j"; }
+  function showCal(k){
+    if(!desk()||!pc) return;
+    pc.hidden=false;
+    pc.querySelector(".pc-title").innerHTML="Wolne terminy "+WHO[k];
+    pc.querySelector(".pc-out").href=LNK[k];
+    if(calK!==k){
+      var f=document.createElement("iframe"); f.src=EMB[k]; f.title="Kalendarz rezerwacji – "+NAME[k];
+      var fr=pc.querySelector(".pc-frame"); fr.innerHTML=""; fr.appendChild(f); calK=k;
+    }
+  }
+  function toggle(){ return '<div class="po-toggle" role="group" aria-label="Rodzaj zajęć"><button type="button" data-pkg="0" aria-pressed="'+(!state.pkg)+'">Pojedyncza lekcja</button><button type="button" data-pkg="1" aria-pressed="'+state.pkg+'">Pakiet 5 lekcji</button></div>'; }
+  function prices(kid){
+    if(state.pkg) return ["5 × 45\u00a0min 550\u00a0zł · 5 × 60\u00a0min 650\u00a0zł","110 zł albo 130 zł za lekcję"];
+    return [kid?"45\u00a0min 120\u00a0zł (polecamy) · 60\u00a0min 140\u00a0zł":"45\u00a0min 120\u00a0zł · 60\u00a0min 140\u00a0zł",""];
+  }
   function render(){
-    var lab="Proponuję",h,p,price="",who="",cta="",notes=[];
+    var lab="Proponuję",h,p,pr=null,who="",cta="",notes=[],tg=false;
     pk.classList.toggle("chosen",!!state.who);
     if(!state.who){
       lab="Wolne terminy"; h="Wybierz, kto będzie pływał"; p="Pokażemy instruktora, cenę i wolne terminy.";
     } else if(state.who==="dziecko"){
       h="Lekcje dla dziecka"; p="Dzieci od 6 lat, każdy poziom: od oswojenia z wodą po doskonalenie techniki u dzieci, które już pływają kraulem. Dziecko ma mniej niż 6 lat? Zacznij od lekcji próbnej.";
-      price="45\u00a0min 120\u00a0zł (polecamy) · 60\u00a0min 140\u00a0zł"; who="Uczy "+WK; cta=btn(L2,"Zobacz wolne terminy","k");
-      notes=[LEN,'Żaden termin nie pasuje? Zadzwoń lub napisz SMS: <a href="tel:+48691325011">691 325 011</a>.',
-             'Dwoje dzieci na podobnym poziomie? Możliwa <a href="#cennik">lekcja w dwójkę</a>: 200\u00a0zł za 45\u00a0min, umawiana telefonicznie.'];
+      tg=true; pr=prices(true); who="Uczy "+WK; cta=btn(L2,"Zobacz wolne terminy","k");
+      notes=[state.pkg?PKG:LEN,'Żaden termin nie pasuje? Zadzwoń lub napisz SMS: <a href="tel:+48691325011">691 325 011</a>.'];
+      if(!state.pkg) notes.push('Dwoje dzieci na podobnym poziomie? Możliwa <a href="#cennik">lekcja w dwójkę</a>: 200\u00a0zł za 45\u00a0min, umawiana telefonicznie.');
     } else if(state.who==="zero"){
       h="Nauka pływania od zera"; p="Od pierwszego wejścia do wody do swobodnego pływania. Bez grupy, w Twoim tempie i bez oceniania.";
-      price=P45; who="Uczy "+WK; cta=btn(L2,"Zobacz wolne terminy","k");
-      notes=[LEN,'Nie pasuje żaden termin? '+link(L1,"Zobacz terminy Jakuba Nachyły")];
+      tg=true; pr=prices(false); who="Uczy "+WK; cta=btn(L2,"Zobacz wolne terminy","k");
+      notes=[state.pkg?PKG:LEN,'Nie pasuje żaden termin? '+swap("j","Zobacz terminy Jakuba Nachyły")];
     } else if(state.who==="plywa"){
       h="Technika i triathlon"; p="Oddech, ułożenie ciała, praca ramion. Pływasz dłużej i z mniejszym wysiłkiem, a w triathlonie wychodzisz z wody z siłami na rower.";
-      price=P45; who="Prowadzi "+WJ; cta=btn(L1,"Zobacz wolne terminy","j");
-      notes=[LEN,'Nie pasuje żaden termin? '+link(L2,"Zobacz terminy Kuby Strządały")];
+      tg=true; pr=prices(false); who="Prowadzi "+WJ; cta=btn(L1,"Zobacz wolne terminy","j");
+      notes=[state.pkg?PKG:LEN,'Nie pasuje żaden termin? '+swap("k","Zobacz terminy Kuby Strządały")];
     } else {
       h="Test sprawnościowy do służb"; p="Straż, policja i wojsko. Część lądowa i pływanie. Zaczynamy od diagnostyki, potem plan aż do egzaminu.";
-      price="diagnostyka 280\u00a0zł · potem od 430\u00a0zł / mies."; who="Prowadzi "+WJ+"<span>, czynny strażak</span>"; cta=btn(L1,"Umów diagnostykę","j");
+      pr=["diagnostyka 280\u00a0zł · potem od 430\u00a0zł / mies.",""]; who="Prowadzi "+WJ+"<span>, czynny strażak</span>"; cta=btn(L1,"Umów diagnostykę","j");
       notes=['Szczegóły: <a href="testy-sprawnosciowe.html">co jest na teście i jak pracujemy</a>'];
     }
     out.classList.remove("swap"); void out.offsetWidth;
-    out.innerHTML=(state.who?'<button type="button" class="po-back">← Zmień wybór</button>':'')+'<p class="label">'+lab+'</p><h4>'+esc(h)+'</h4><p>'+esc(p)+'</p>'+(price?'<p class="po-price">'+esc(price)+'</p>':'')+(who?'<p class="po-who">'+who+'</p>':'')+(cta?'<div class="po-cta">'+cta+'</div>':'')+notes.map(function(n){return '<p class="po-alt">'+n+'</p>';}).join('');
+    out.innerHTML=(state.who?'<button type="button" class="po-back">← Zmień wybór</button>':'')+'<p class="label">'+lab+'</p><h4>'+esc(h)+'</h4><p>'+esc(p)+'</p>'+(tg?toggle():'')+(pr?'<p class="po-price">'+esc(pr[0])+'</p>'+(pr[1]?'<p class="po-sub">'+esc(pr[1])+'</p>':''):'')+(who?'<p class="po-who">'+who+'</p>':'')+(cta?'<div class="po-cta">'+cta+'</div>':'')+notes.map(function(n){return '<p class="po-alt">'+n+'</p>';}).join('');
     out.classList.add("swap");
+    if(state.who) showCal(inst());
   }
   function pick(v,scroll){
     state.who=v; setPressed(v); render();
-    if(scroll && window.innerWidth<=860){ var r=out.getBoundingClientRect(); if(r.top>90||r.bottom>window.innerHeight-80) out.scrollIntoView({behavior:"smooth",block:"start"}); }
+    if(scroll && !desk()){ var r=out.getBoundingClientRect(); if(r.top>90||r.bottom>window.innerHeight-80) out.scrollIntoView({behavior:"smooth",block:"start"}); }
   }
-  out.addEventListener("click",function(e){ if(e.target.closest(".po-back")) pk.scrollIntoView({behavior:"smooth",block:"start"}); });
   pk.classList.add("js");
+  out.addEventListener("click",function(e){
+    if(e.target.closest(".po-back")){ pk.scrollIntoView({behavior:"smooth",block:"start"}); return; }
+    var t=e.target.closest("[data-pkg]"); if(t){ state.pkg=t.getAttribute("data-pkg")==="1"; render(); return; }
+    var c=e.target.closest("[data-cal],[data-cta]");
+    if(c && desk() && pc){ e.preventDefault(); showCal(c.getAttribute("data-cal")||c.getAttribute("data-cta")); pc.scrollIntoView({behavior:"smooth",block:"start"}); }
+  });
   document.querySelectorAll('.opt[data-q="who"]').forEach(function(b){ b.addEventListener("click",function(){ pick(b.getAttribute("data-v"),true); }); });
   document.querySelectorAll("[data-pick]").forEach(function(a){ a.addEventListener("click",function(){ pick(a.getAttribute("data-pick"),false); }); });
   render();
