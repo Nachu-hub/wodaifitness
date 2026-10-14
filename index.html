@@ -602,6 +602,18 @@ footer a:hover{color:var(--deep-fg)}
 .po-toggle button[aria-pressed="true"]{background:var(--deep-fg);color:var(--deep)}
 .po-toggle button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .picker-out .po-sub{font-size:.88rem;color:var(--deep-muted);opacity:1;margin-top:-8px}
+.po-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:440px;margin-top:4px}
+.po-tile{position:relative;display:flex;flex-direction:column;gap:3px;padding:16px 16px 14px;border:1.5px solid var(--deep-line);border-radius:10px;background:var(--deep-card);min-width:0}
+.po-tile.rec{border-color:var(--accent)}
+.po-tile .t-len{font-size:.88rem;font-weight:600;color:var(--deep-muted)}
+.po-tile .t-price{font-family:var(--display);font-stretch:75%;font-variation-settings:"wdth" 75;font-weight:800;font-size:2rem;line-height:1;color:var(--deep-fg);white-space:nowrap}
+.po-tile .t-sub{font-size:.8rem;line-height:1.35;color:var(--deep-muted)}
+.po-tile .t-sub b{color:var(--deep-fg);font-weight:600}
+.po-tile .t-badge{position:absolute;top:-10px;left:12px;padding:3px 9px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+.po-rules{margin:2px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;max-width:32em}
+.po-rules li{position:relative;padding-left:20px;font-size:.92rem;line-height:1.45;color:var(--deep-fg);opacity:.9}
+.po-rules li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.po-rules-h{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--deep-muted);opacity:1;margin-bottom:-6px}
 </style>
 </head>
 <body>
@@ -1099,7 +1111,7 @@ footer a:hover{color:var(--deep-fg)}
   var out=document.getElementById("picker-out"), pk=document.getElementById("dobierz"), pc=document.getElementById("picker-cal");
   var EMB={k:"https://calendar.google.com/calendar/appointments/schedules/AcZssZ1GHwEcdQ8Ak6Oux_ymi6aOMwKeFJ_EGhbKg-RToQY2Ih7EFewDdsqBOL1IBMdHO6XQx_b4T0Jl?gv=true",j:"https://calendar.google.com/calendar/appointments/schedules/AcZssZ3ZrIUXqaUkBnpbHWyr8IeXHsm0-k5RuqmqEyNsVcqcRkmqPQFRkKIck0vHacT2p7Oi2rsMgYbT?gv=true"}, LNK={k:L2,j:L1}, WHO={k:WK,j:WJ}, NAME={k:"Kuba Strządała",j:"Jakub Nachyła"}, calK=null;
   var LEN="W kalendarzu rezerwujesz godzinę, a długość (45 lub 60 min) podajesz przy rezerwacji.";
-  var PKG="Pakiet płacisz z góry na pierwszej lekcji i jest ważny 10 tygodni od niej. W kalendarzu rezerwujesz pierwszą lekcję i dopisujesz „pakiet”, a kolejne terminy ustalacie na zajęciach.";
+  var PKG='<p class="po-rules-h">Jak działa pakiet</p><ul class="po-rules"><li>Płacisz z góry, na pierwszej lekcji.</li><li>Ważny 10 tygodni od pierwszej lekcji.</li><li>W kalendarzu rezerwujesz pierwszą lekcję i dopisujesz „pakiet”. Kolejne terminy ustalacie na zajęciach.</li></ul>';
   function desk(){ return window.matchMedia("(min-width:861px)").matches; }
   function btn(href,label,k){ return '<a class="btn btn-'+k+'" href="'+href+'" target="_blank" rel="noopener" data-cta="'+k+'"><img class="bface" src="'+FACE[k]+'" alt="" width="56" height="56">'+label+' '+ARROW+'</a>'; }
   function esc(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
@@ -1117,9 +1129,11 @@ footer a:hover{color:var(--deep-fg)}
     }
   }
   function toggle(){ return '<div class="po-toggle" role="group" aria-label="Rodzaj zajęć"><button type="button" data-pkg="0" aria-pressed="'+(!state.pkg)+'">Pojedyncza lekcja</button><button type="button" data-pkg="1" aria-pressed="'+state.pkg+'">Pakiet 5 lekcji</button></div>'; }
+  function tile(len,price,sub,badge){ return '<div class="po-tile'+(badge?' rec':'')+'">'+(badge?'<span class="t-badge">'+badge+'</span>':'')+'<span class="t-len">'+len+'</span><span class="t-price">'+price+'</span>'+(sub?'<span class="t-sub">'+sub+'</span>':'')+'</div>'; }
   function prices(kid){
-    if(state.pkg) return ["5 × 45\u00a0min 550\u00a0zł · 5 × 60\u00a0min 650\u00a0zł","110 zł albo 130 zł za lekcję"];
-    return [kid?"45\u00a0min 120\u00a0zł (polecamy) · 60\u00a0min 140\u00a0zł":"45\u00a0min 120\u00a0zł · 60\u00a0min 140\u00a0zł",""];
+    var N="\u00a0";
+    if(state.pkg) return '<div class="po-tiles">'+tile("5 × 45"+N+"min","550"+N+"zł","110"+N+"zł za lekcję<br><b>taniej o 50"+N+"zł</b>",kid?"Polecamy":"")+tile("5 × 60"+N+"min","650"+N+"zł","130"+N+"zł za lekcję<br><b>taniej o 50"+N+"zł</b>","")+'</div>'+PKG;
+    return '<div class="po-tiles">'+tile("45"+N+"min","120"+N+"zł","za lekcję",kid?"Polecamy":"")+tile("60"+N+"min","140"+N+"zł","za lekcję","")+'</div>';
   }
   function render(){
     var lab="Proponuję",h,p,pr=null,who="",cta="",notes=[],tg=false;
@@ -1129,23 +1143,23 @@ footer a:hover{color:var(--deep-fg)}
     } else if(state.who==="dziecko"){
       h="Lekcje dla dziecka"; p="Dzieci od 6 lat, każdy poziom: od oswojenia z wodą po doskonalenie techniki u dzieci, które już pływają kraulem. Dziecko ma mniej niż 6 lat? Zacznij od lekcji próbnej.";
       tg=true; pr=prices(true); who="Uczy "+WK; cta=btn(L2,"Zobacz wolne terminy","k");
-      notes=[state.pkg?PKG:LEN,'Żaden termin nie pasuje? Zadzwoń lub napisz SMS: <a href="tel:+48691325011">691 325 011</a>.'];
+      notes=[state.pkg?"":LEN,'Żaden termin nie pasuje? Zadzwoń lub napisz SMS: <a href="tel:+48691325011">691 325 011</a>.'];
       if(!state.pkg) notes.push('Dwoje dzieci na podobnym poziomie? Możliwa <a href="#cennik">lekcja w dwójkę</a>: 200\u00a0zł za 45\u00a0min, umawiana telefonicznie.');
     } else if(state.who==="zero"){
       h="Nauka pływania od zera"; p="Od pierwszego wejścia do wody do swobodnego pływania. Bez grupy, w Twoim tempie i bez oceniania.";
       tg=true; pr=prices(false); who="Uczy "+WK; cta=btn(L2,"Zobacz wolne terminy","k");
-      notes=[state.pkg?PKG:LEN,'Nie pasuje żaden termin? '+swap("j","Zobacz terminy Jakuba Nachyły")];
+      notes=[state.pkg?"":LEN,'Nie pasuje żaden termin? '+swap("j","Zobacz terminy Jakuba Nachyły")];
     } else if(state.who==="plywa"){
       h="Technika i triathlon"; p="Oddech, ułożenie ciała, praca ramion. Pływasz dłużej i z mniejszym wysiłkiem, a w triathlonie wychodzisz z wody z siłami na rower.";
       tg=true; pr=prices(false); who="Prowadzi "+WJ; cta=btn(L1,"Zobacz wolne terminy","j");
-      notes=[state.pkg?PKG:LEN,'Nie pasuje żaden termin? '+swap("k","Zobacz terminy Kuby Strządały")];
+      notes=[state.pkg?"":LEN,'Nie pasuje żaden termin? '+swap("k","Zobacz terminy Kuby Strządały")];
     } else {
       h="Test sprawnościowy do służb"; p="Straż, policja i wojsko. Część lądowa i pływanie. Zaczynamy od diagnostyki, potem plan aż do egzaminu.";
-      pr=["diagnostyka 280\u00a0zł · potem od 430\u00a0zł / mies.",""]; who="Prowadzi "+WJ+"<span>, czynny strażak</span>"; cta=btn(L1,"Umów diagnostykę","j");
+      pr='<div class="po-tiles">'+tile("Diagnostyka","280\u00a0zł","na start","")+tile("Plan do egzaminu","od 430\u00a0zł","miesięcznie","")+'</div>'; who="Prowadzi "+WJ+"<span>, czynny strażak</span>"; cta=btn(L1,"Umów diagnostykę","j");
       notes=['Szczegóły: <a href="testy-sprawnosciowe.html">co jest na teście i jak pracujemy</a>'];
     }
     out.classList.remove("swap"); void out.offsetWidth;
-    out.innerHTML=(state.who?'<button type="button" class="po-back">← Zmień wybór</button>':'')+'<p class="label">'+lab+'</p><h4>'+esc(h)+'</h4><p>'+esc(p)+'</p>'+(tg?toggle():'')+(pr?'<p class="po-price">'+esc(pr[0])+'</p>'+(pr[1]?'<p class="po-sub">'+esc(pr[1])+'</p>':''):'')+(who?'<p class="po-who">'+who+'</p>':'')+(cta?'<div class="po-cta">'+cta+'</div>':'')+notes.map(function(n){return '<p class="po-alt">'+n+'</p>';}).join('');
+    out.innerHTML=(state.who?'<button type="button" class="po-back">← Zmień wybór</button>':'')+'<p class="label">'+lab+'</p><h4>'+esc(h)+'</h4><p>'+esc(p)+'</p>'+(tg?toggle():'')+(pr||'')+(who?'<p class="po-who">'+who+'</p>':'')+(cta?'<div class="po-cta">'+cta+'</div>':'')+notes.filter(Boolean).map(function(n){return '<p class="po-alt">'+n+'</p>';}).join('');
     out.classList.add("swap");
     if(state.who) showCal(inst());
   }
