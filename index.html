@@ -402,7 +402,7 @@ p{margin:0}
 .rev figcaption{margin-top:auto;font-weight:600}
 .rev figcaption span{display:block;font-weight:400;font-size:.85rem;color:var(--muted)}
 .rev-note{margin-top:18px;font-size:var(--fs-sm);color:var(--muted)}
-@media (max-width:900px){.rev-grid{grid-template-columns:minmax(0,1fr)}.rev{padding:22px}}
+@media (max-width:900px){.rev-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:86%;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:10px;gap:14px}.rev{padding:22px;scroll-snap-align:start}.rev:hover{transform:none}}
 
 /* pasek rezerwacji na telefonie */
 .mbar{display:none}
@@ -666,7 +666,7 @@ footer a:hover{color:var(--deep-fg)}
       <p class="trust">Sportowiec Roku 2025 w powiecie pszczyńskim · Instruktor sportu – pływanie · Ratownik wodny WOPR</p>
       <div class="facts">
         <div><b><a href="#cennik">od 120 zł</a></b><span>lekcja 45 lub 60 min</span></div>
-        <div><b>5,0 ★</b><span>10 opinii w Google</span></div>
+        <div><b>5,0 ★</b><span>13 opinii w Google</span></div>
         <div><b>1:1</b><span>dwóch instruktorów</span></div>
       </div>
       </div>
@@ -787,13 +787,23 @@ footer a:hover{color:var(--deep-fg)}
       <div class="sec-head">
         <p class="label">Opinie</p>
         <h2 class="cond">Co mówią kursanci</h2>
-        <p class="rating"><b>5,0</b><span class="stars" aria-label="5 na 5 gwiazdek">★★★★★</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Woda+%26+Fitness+Jakub+Nachy%C5%82a" rel="noopener">10 opinii w Google</a></p>
+        <p class="rating"><b>5,0</b><span class="stars" aria-label="5 na 5 gwiazdek">★★★★★</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Woda+%26+Fitness+Jakub+Nachy%C5%82a" rel="noopener">13 opinii w Google</a></p>
       </div>
       <ul class="rev-grid">
         <li><figure class="rev">
           <span class="stars" aria-hidden="true">★★★★★</span>
           <blockquote>„Bardzo długo zwlekałam z rozpoczęciem nauki pływania, ponieważ mam lęk przed wodą. Dziś żałuję tylko, że nie zdecydowałam się wcześniej! Z każdymi zajęciami czuję się coraz pewniej.”</blockquote>
           <figcaption>Aleksandra B.<span>opinia w Google</span></figcaption>
+        </figure></li>
+        <li><figure class="rev">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <blockquote>„Pan Jakub przygotowuje syna do zawodów okręgowych z pełnym zaangażowaniem. Każde zajęcia świetnie przygotowane (…), wszystkie błędy są starannie poprawiane. Wszystko dokładnie wytłumaczone, a trening dostosowany pod dziecko.”</blockquote>
+          <figcaption>Klaudia A.<span>opinia w Google</span></figcaption>
+        </figure></li>
+        <li><figure class="rev">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <blockquote>„Lepszego trenera nie znajdziesz. Na spokojnie i dobrze wytłumaczy, co masz zrobić i co robisz źle. Przygotuje cały dokładny plan treningu…”</blockquote>
+          <figcaption>Szymon F.<span>opinia w Google</span></figcaption>
         </figure></li>
         <li><figure class="rev">
           <span class="stars" aria-hidden="true">★★★★★</span>
@@ -804,6 +814,11 @@ footer a:hover{color:var(--deep-fg)}
           <span class="stars" aria-hidden="true">★★★★★</span>
           <blockquote>„W idealnym świecie każdy trener ma taki poziom wiedzy i taką umiejętność przekazywania jej – przystępnie, w luźnej atmosferze, zarażając pasją.”</blockquote>
           <figcaption>Aleksandra C.<span>opinia w Google</span></figcaption>
+        </figure></li>
+        <li><figure class="rev">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <blockquote>„Profesjonalny, zaangażowany i cierpliwy trener, który potrafi świetnie zmotywować i przekazać cenne wskazówki. Widać efekty już od pierwszego treningu.”</blockquote>
+          <figcaption>Aleksander O.<span>opinia w Google</span></figcaption>
         </figure></li>
       </ul>
       <p class="rev-note">Wybrane opinie kursantów z wizytówki Woda &amp; Fitness w Google. <a href="https://www.google.com/maps/search/?api=1&amp;query=Woda+%26+Fitness+Jakub+Nachy%C5%82a" rel="noopener">Zobacz wszystkie opinie</a></p>
