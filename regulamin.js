@@ -35,7 +35,7 @@
       '<ul>'+
       '<li>Lekcja 45 min 120 zł, 60 min 140 zł. Pakiet 5 lekcji: 550 zł (45 min) lub 650 zł (60 min), ważny 10 tygodni, potem voucher na 90 dni.</li>'+
       '<li>Odwołanie do 24 h przed lekcją jest bezpłatne. Później lekcja jest płatna. Nagła choroba lub wypadek zgłoszone przed lekcją: bez opłaty.</li>'+
-      '<li>Płatność przelewem lub BLIK-iem na numer instruktora. Bilet na basen kupujesz osobno.</li>'+
+      '<li>Płatność przelewem, BLIK-iem albo gotówką na miejscu, przed lekcją. Bilet na basen kupujesz osobno.</li>'+
       '<li>Z pakietu możesz zrezygnować w każdej chwili ze zwrotem za niewykorzystane lekcje. Przy zakupie na odległość masz też 14 dni na odstąpienie od umowy (nie dotyczy lekcji z ustalonym terminem).</li>'+
       '</ul>'+
       '<label><input type="checkbox" class="wf-c1"><span>Przeczytałem/-am <a href="regulamin.html" target="_blank" rel="noopener">Regulamin</a> i <a href="polityka-prywatnosci.html" target="_blank" rel="noopener">Politykę prywatności</a> i akceptuję Regulamin.</span></label>'+
