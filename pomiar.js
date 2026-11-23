@@ -31,6 +31,7 @@
     if(o){ var v=o.getAttribute("data-v"); last=WHO[v]||last; ev("wybor-"+v); return; }
     if(t.closest(".wf-go")){ var g=t.closest(".wf-go"); if(!g.disabled) ev("regulamin-ok"+(last?"-"+last:"")); return; }
     var a=t.closest("a[href]"); if(!a) return;
+    if(a.hasAttribute("data-ev")){ ev(a.getAttribute("data-ev")); return; }
     var h=a.getAttribute("href")||"", k=cal(h);
     if(k){ last=k; ev("kalendarz-"+k); return; }
     if(h.indexOf("tel:")===0){ ev("telefon"); return; }
