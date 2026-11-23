@@ -170,6 +170,9 @@
       '<p class="pc-src">To orientacyjny wynik z tabeli, nie gwarancja. Liczy się wynik zmierzony przez komisję i zasady z Twojego ogłoszenia. Zasady: '+M.zrodlo+'. Normy sprawdzone: '+NORMY_SPRAWDZONE+'.</p>';
   }
 
+  form.addEventListener("submit",function(){
+    if(window.innerWidth<=860){ var box=out.parentNode, top=box.getBoundingClientRect().top+window.pageYOffset-84; window.scrollTo({top:top,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}); }
+  });
   form.addEventListener("change",sync);
   form.addEventListener("submit",calc);
   sync();
