@@ -26,6 +26,7 @@
 @font-face{font-family:"Archivo";font-style:normal;font-display:swap;font-weight:100 900;font-stretch:62% 125%;src:url(fonts/archivo-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Instrument Sans";font-style:normal;font-display:swap;font-weight:400 700;font-stretch:75% 100%;src:url(fonts/instrument-sans-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Instrument Sans";font-style:normal;font-display:swap;font-weight:400 700;font-stretch:75% 100%;src:url(fonts/instrument-sans-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+picture{display:contents}
 </style>
 <style>
 :root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -678,7 +679,7 @@ footer a:hover{color:var(--deep-fg)}
           <div><b>1:1</b><span>instruktor tylko dla dziecka</span></div>
         </div>
       </div>
-      <figure class="hero-photo" style="--pos:50% 70%"><img src="img/trener-kuba-basen-pion.jpg" alt="Kuba Strządała w koszulce Woda &amp; Fitness na krytej pływalni" width="800" height="1000" fetchpriority="high"></figure>
+      <figure class="hero-photo" style="--pos:50% 70%"><picture><source srcset="img/trener-kuba-basen-pion.webp" type="image/webp"><img src="img/trener-kuba-basen-pion.jpg" alt="Kuba Strządała w koszulce Woda &amp; Fitness na krytej pływalni" width="800" height="1000" fetchpriority="high"></picture></figure>
     </div>
     <div class="wave bottom" aria-hidden="true"><svg viewBox="0 0 1440 46" preserveAspectRatio="none"><path d="M0 26C160 6 320 4 480 16s320 30 480 24 320-30 480-26V46H0z" fill="currentColor"/></svg></div>
   </section>
@@ -723,7 +724,7 @@ footer a:hover{color:var(--deep-fg)}
     <canvas data-water="coach" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="coach-side">
-        <figure class="portrait"><img src="img/kuba-podium.jpg" alt="Kuba na najwyższym stopniu podium, Jakub stopień niżej, obaj z medalami i dyplomami" width="600" height="1050" loading="lazy" style="object-position:50% 16%"></figure>
+        <figure class="portrait"><picture><source srcset="img/kuba-podium.webp" type="image/webp"><img src="img/kuba-podium.jpg" alt="Kuba na najwyższym stopniu podium, Jakub stopień niżej, obaj z medalami i dyplomami" width="600" height="1050" loading="lazy" style="object-position:50% 16%"></picture></figure>
         <figure class="podium-band noimg">
           <figcaption><span class="label">Z archiwum</span><q>Kuba na najwyższym stopniu, ja stopień niżej. W Woda &amp; Fitness nie ma przypadkowych ludzi, dlatego spokojnie powierzam mu swoich kursantów.</q><span class="who">Jakub, X Memoriał Pływacki im. Krzysztofa Kanika</span></figcaption>
         </figure>
@@ -791,7 +792,7 @@ footer a:hover{color:var(--deep-fg)}
         <p>Kacpra do startu przygotowywał Jakub Nachyła, założyciel Woda &amp; Fitness. Chcesz przygotować dziecko do zawodów? Zadzwoń: <a href="tel:+48691325011">691 325 011</a>.</p>
       </div>
       <div class="pupil">
-        <figure class="pupil-media"><img src="img/kacper-okladka.jpg" alt="Kacper płynie kraulem w swoim pierwszym wyścigu na zawodach" width="960" height="540" loading="lazy"><video data-mp4="img/kacper-petla.mp4" data-webm="img/kacper-petla.webm" muted loop playsinline disablepictureinpicture preload="none" aria-hidden="true" tabindex="-1"></video><span class="pupil-tag">Kacper, 25 m kraulem</span></figure>
+        <figure class="pupil-media"><picture><source srcset="img/kacper-okladka.webp" type="image/webp"><img src="img/kacper-okladka.jpg" alt="Kacper płynie kraulem w swoim pierwszym wyścigu na zawodach" width="960" height="540" loading="lazy"></picture><video data-mp4="img/kacper-petla.mp4" data-webm="img/kacper-petla.webm" muted loop playsinline disablepictureinpicture preload="none" aria-hidden="true" tabindex="-1"></video><span class="pupil-tag">Kacper, 25 m kraulem</span></figure>
         <div class="pupil-body">
           <p class="label">Kursanci na zawodach</p>
           <h3>Kacper: 6. miejsce w pierwszych zawodach</h3>
@@ -801,7 +802,7 @@ footer a:hover{color:var(--deep-fg)}
             <li><b>7–8 lat</b>kategoria</li>
           </ul>
           <p>Powiatowa Liga Pływacka, Kozy, 20 października 2026. Płynął w najszybszej serii, razem ze starszymi zawodnikami. Przed startem mieliśmy 5 lekcji w 2,5 tygodnia.</p>
-          <figure class="pupil-photo"><img src="img/kacper-z-jakubem.jpg" alt="Kacper z dyplomem za 6. miejsce i trener Jakub Nachyła w koszulce Woda &amp; Fitness" width="640" height="800" loading="lazy"><figcaption>Kacper z trenerem Jakubem Nachyłą po dekoracji. Chcesz przygotować dziecko do zawodów? Zadzwoń: <a href="tel:+48691325011">691 325 011</a></figcaption></figure>
+          <figure class="pupil-photo"><picture><source srcset="img/kacper-z-jakubem.webp" type="image/webp"><img src="img/kacper-z-jakubem.jpg" alt="Kacper z dyplomem za 6. miejsce i trener Jakub Nachyła w koszulce Woda &amp; Fitness" width="640" height="800" loading="lazy"></picture><figcaption>Kacper z trenerem Jakubem Nachyłą po dekoracji. Chcesz przygotować dziecko do zawodów? Zadzwoń: <a href="tel:+48691325011">691 325 011</a></figcaption></figure>
         </div>
       </div>
     </div>

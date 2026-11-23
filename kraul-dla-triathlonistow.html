@@ -26,6 +26,7 @@
 @font-face{font-family:"Archivo";font-style:normal;font-display:swap;font-weight:100 900;font-stretch:62% 125%;src:url(fonts/archivo-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Instrument Sans";font-style:normal;font-display:swap;font-weight:400 700;font-stretch:75% 100%;src:url(fonts/instrument-sans-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Instrument Sans";font-style:normal;font-display:swap;font-weight:400 700;font-stretch:75% 100%;src:url(fonts/instrument-sans-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+picture{display:contents}
 </style>
 <style>
 :root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -678,7 +679,7 @@ footer a:hover{color:var(--deep-fg)}
           <div><b>1:1</b><span>basen 25 m</span></div>
         </div>
       </div>
-      <figure class="hero-photo" style="--pos:50% 25%"><img src="img/zawody-strefa-zmian.jpg" alt="Jakub Nachyła w koszulce Woda &amp; Fitness przy rowerze w strefie zmian" width="750" height="1000" fetchpriority="high"></figure>
+      <figure class="hero-photo" style="--pos:50% 25%"><picture><source srcset="img/zawody-strefa-zmian.webp" type="image/webp"><img src="img/zawody-strefa-zmian.jpg" alt="Jakub Nachyła w koszulce Woda &amp; Fitness przy rowerze w strefie zmian" width="750" height="1000" fetchpriority="high"></picture></figure>
     </div>
     <div class="wave bottom" aria-hidden="true"><svg viewBox="0 0 1440 46" preserveAspectRatio="none"><path d="M0 26C160 6 320 4 480 16s320 30 480 24 320-30 480-26V46H0z" fill="currentColor"/></svg></div>
   </section>
@@ -733,9 +734,9 @@ footer a:hover{color:var(--deep-fg)}
           <div class="stat"><b>56,36&nbsp;s</b><span>100 m kraulem, brąz na Mistrzostwach Polski Służb Mundurowych w pływaniu, Szczytno 2025</span></div>
       </div>
       <ul class="race-grid">
-        <li><img src="img/zawody-rower.jpg" alt="Jakub Nachyła prowadzi rower czasowy, na plecach napis Jakub Nachyła" width="750" height="1000" loading="lazy"></li>
-        <li><img src="img/zawody-numer.jpg" alt="Numer startowy 260 wypisany na łydce" width="750" height="1000" loading="lazy"></li>
-        <li><img src="img/hero-podwodne.jpg" alt="Jakub Nachyła płynie kraulem pod wodą wzdłuż toru basenu" width="800" height="1000" loading="lazy"></li>
+        <li><picture><source srcset="img/zawody-rower.webp" type="image/webp"><img src="img/zawody-rower.jpg" alt="Jakub Nachyła prowadzi rower czasowy, na plecach napis Jakub Nachyła" width="750" height="1000" loading="lazy"></picture></li>
+        <li><picture><source srcset="img/zawody-numer.webp" type="image/webp"><img src="img/zawody-numer.jpg" alt="Numer startowy 260 wypisany na łydce" width="750" height="1000" loading="lazy"></picture></li>
+        <li><picture><source srcset="img/hero-podwodne.webp" type="image/webp"><img src="img/hero-podwodne.jpg" alt="Jakub Nachyła płynie kraulem pod wodą wzdłuż toru basenu" width="800" height="1000" loading="lazy"></picture></li>
       </ul>
       <p class="race-note">Zdjęcia z zawodów: Daniel, <a href="https://www.instagram.com/den_cinematography/" rel="noopener">@den_cinematography</a></p>
     </div>
@@ -751,11 +752,11 @@ footer a:hover{color:var(--deep-fg)}
       </div>
       <ul class="tips-grid two">
         <li><a class="tip" href="https://www.instagram.com/p/DZ8A1ZVILiW/" target="_blank" rel="noopener">
-          <span class="tip-media"><img src="img/poradnik-krokodyl.jpg" alt="" width="540" height="960" loading="lazy"><video data-mp4="img/poradnik-krokodyl.mp4" data-webm="img/poradnik-krokodyl.webm" muted loop playsinline disablepictureinpicture preload="none" aria-hidden="true" tabindex="-1"></video><span class="tip-views">70 tys.+ wyświetleń</span></span>
+          <span class="tip-media"><picture><source srcset="img/poradnik-krokodyl.webp" type="image/webp"><img src="img/poradnik-krokodyl.jpg" alt="" width="540" height="960" loading="lazy"></picture><video data-mp4="img/poradnik-krokodyl.mp4" data-webm="img/poradnik-krokodyl.webm" muted loop playsinline disablepictureinpicture preload="none" aria-hidden="true" tabindex="-1"></video><span class="tip-views">70 tys.+ wyświetleń</span></span>
           <span class="tip-body"><span class="k">Otwarta woda · triathlon</span><b>Oko krokodyla</b><span class="d">Podnosisz całą głowę, żeby zobaczyć boję, i toniesz od bioder. Wystarczy unieść nad wodę same oczy.</span><span class="go">Zobacz rolkę na Instagramie <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></span>
         </a></li>
         <li><a class="tip" href="https://www.instagram.com/p/Dc_hQzyoHrg/" target="_blank" rel="noopener">
-          <span class="tip-media"><img src="img/poradnik-skraca.jpg" alt="" width="540" height="960" loading="lazy"><video data-mp4="img/poradnik-skraca.mp4" data-webm="img/poradnik-skraca.webm" muted loop playsinline disablepictureinpicture preload="none" aria-hidden="true" tabindex="-1"></video><span class="tip-views">50 tys.+ wyświetleń</span></span>
+          <span class="tip-media"><picture><source srcset="img/poradnik-skraca.webp" type="image/webp"><img src="img/poradnik-skraca.jpg" alt="" width="540" height="960" loading="lazy"></picture><video data-mp4="img/poradnik-skraca.mp4" data-webm="img/poradnik-skraca.webm" muted loop playsinline disablepictureinpicture preload="none" aria-hidden="true" tabindex="-1"></video><span class="tip-views">50 tys.+ wyświetleń</span></span>
           <span class="tip-body"><span class="k">Basen · kraul</span><b>Ten błąd cię skraca</b><span class="d">Pływasz płasko, tułów stoi, a ręka nie sięga daleko. Poprawka: ruch zaczyna się w tułowiu.</span><span class="go">Zobacz rolkę na Instagramie <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></span>
         </a></li>
       </ul>
@@ -771,7 +772,7 @@ footer a:hover{color:var(--deep-fg)}
     <canvas data-water="coach" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="coach-side">
-        <figure class="portrait"><img src="img/trener-jakub.jpg" alt="Jakub Nachyła w koszulce Woda &amp; Fitness na krytej pływalni" width="800" height="1000" loading="lazy" style="object-position:50% 22%"></figure>
+        <figure class="portrait"><picture><source srcset="img/trener-jakub.webp" type="image/webp"><img src="img/trener-jakub.jpg" alt="Jakub Nachyła w koszulce Woda &amp; Fitness na krytej pływalni" width="800" height="1000" loading="lazy" style="object-position:50% 22%"></picture></figure>
       </div>
       <div class="coach-copy">
         <p class="label">Kto prowadzi</p>
