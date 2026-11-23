@@ -51,8 +51,8 @@
       zrodlo:"Rozporządzenie MSWiA, Dz.U. 2021 poz. 1772, w brzmieniu od 20.11.2026 (Dz.U. 2026 poz. 1459)"},
     sluzbaStare:{nazwa:"Nabór do służby, postępowanie rozpoczęte przed 20.11.2026",m:50,k:46,low:41,swim:90,
       zrodlo:"Rozporządzenie MSWiA, Dz.U. 2021 poz. 1772, w brzmieniu sprzed 20.11.2026"},
-    szkola:{nazwa:"Szkoła PSP (nabór 2026/2027)",m:50,k:46,low:null,swim:90,
-      zrodlo:"Zasady naboru do szkół PSP na rok 2026/2027 (SA PSP w Krakowie, gov.pl)"}
+    szkola:{nazwa:"Szkoła aspirantów PSP (nabór 2026/2027)",m:50,k:46,low:null,swim:90,
+      zrodlo:"Zasady naboru do szkół aspirantów PSP na rok 2026/2027 (SA PSP w Krakowie, gov.pl)"}
   };
 
   function beepKey(s){ var p=String(s).split("-"); return (+p[0])*100+(+p[1]); }
