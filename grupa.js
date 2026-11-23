@@ -6,7 +6,7 @@
   "use strict";
 
   /* Adres webhooka z Make. Wklej go zamiast [WEBHOOK_URL] (zostaw cudzysłowy). */
-  var WEBHOOK_URL="[WEBHOOK_URL]";
+  var WEBHOOK_URL="https://hook.eu1.make.com/w21o8v75d53dg526dfsrkunfyr3mal9f";
 
   var OK_MSG="Mamy Twoje zgłoszenie, odezwiemy się, gdy zbierze się grupa.";
   var ZGODA="Zgadzam się na kontakt telefoniczny lub SMS w sprawie zajęć w grupie. Jeśli zgłaszam dziecko, jestem jego rodzicem lub opiekunem.";
