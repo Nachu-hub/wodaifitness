@@ -1061,31 +1061,50 @@ footer a:hover{color:var(--deep-fg)}
     size(s); s.gl.uniform2f(s.uR,s.canvas.width,s.canvas.height); s.gl.uniform1f(s.uT,t); s.gl.uniform1f(s.uF,s.fade); s.gl.uniform1f(s.uG,s.gain); s.gl.uniform3f(s.uM,s.mx,s.my,s.ms);
     s.gl.drawArrays(s.gl.TRIANGLE_STRIP,0,4);
   }
-  var scenes=[];
-  document.querySelectorAll("canvas[data-water]").forEach(function(c){
-    try{ var s=setup(c); if(s){ scenes.push(s); draw(s,12.0); c.classList.add("on"); } }catch(e){}
-  });
-  if(!scenes.length) return;
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){scenes.forEach(function(s){if(s.canvas===e.target)s.visible=e.isIntersecting;});});});
-    scenes.forEach(function(s){io.observe(s.canvas);});
-  }
-  window.addEventListener("resize",function(){scenes.forEach(function(s){draw(s,12.0+(performance.now()/1000));});});
-  if(reduce) return;
-  scenes.forEach(function(s){
+  /* Woda startuje dopiero po załadowaniu strony i tylko dla płócien blisko ekranu,
+     żeby nie blokować pierwszego wyświetlenia i kliknięć. Na telefonach bez sprzętowej
+     grafiki (renderowanie programowe) zostaje jedna nieruchoma klatka zamiast animacji. */
+  var scenes=[], soft=false, running=false, t0=0, io=null;
+  var cvs=[].slice.call(document.querySelectorAll("canvas[data-water]"));
+  if(!cvs.length) return;
+  function now(){ return 12.0+(running?(performance.now()-t0)/1000:0); }
+  function pointer(s){
     var host=s.canvas.parentElement;
     host.addEventListener("pointermove",function(e){
       var r=s.canvas.getBoundingClientRect(), k=s.canvas.width/Math.max(1,r.width);
       s.mx=(e.clientX-r.left)*k; s.my=s.canvas.height-(e.clientY-r.top)*k; s.mt=1;
     },{passive:true});
     host.addEventListener("pointerleave",function(){ s.mt=0; },{passive:true});
-  });
-  var t0=performance.now();
-  (function loop(now){
-    var t=12.0+(now-t0)/1000;
+  }
+  function init(c){
+    if(c.getAttribute("data-wf")) return; c.setAttribute("data-wf","1");
+    var s=null; try{ s=setup(c); }catch(e){}
+    if(!s) return;
+    if(!scenes.length){
+      try{ var x=s.gl.getExtension("WEBGL_debug_renderer_info"); soft=/swiftshader|llvmpipe|softpipe|software|basic render/i.test(x?String(s.gl.getParameter(x.UNMASKED_RENDERER_WEBGL)):""); }catch(e){}
+    }
+    scenes.push(s); try{ draw(s,now()); c.classList.add("on"); }catch(e){}
+    if(!reduce && !soft) pointer(s);
+  }
+  function find(c){ for(var i=0;i<scenes.length;i++){ if(scenes[i].canvas===c) return scenes[i]; } return null; }
+  function loop(ts){
+    var t=12.0+(ts-t0)/1000;
     scenes.forEach(function(s){ s.ms+=(s.mt-s.ms)*0.06; s.mt*=0.985; if(s.visible) draw(s,t); });
     requestAnimationFrame(loop);
-  })(t0);
+  }
+  function start(){
+    if("IntersectionObserver" in window){
+      io=new IntersectionObserver(function(es){ es.forEach(function(e){
+        if(e.isIntersecting) init(e.target);
+        var s=find(e.target); if(s) s.visible=e.isIntersecting;
+      }); },{rootMargin:"300px 0px"});
+      cvs.forEach(function(c){ io.observe(c); });
+    } else cvs.forEach(init);
+    window.addEventListener("resize",function(){ scenes.forEach(function(s){ draw(s,now()); }); });
+    if(reduce) return;
+    setTimeout(function(){ if(soft||running) return; running=true; t0=performance.now(); requestAnimationFrame(loop); },60);
+  }
+  if(document.readyState==="complete") setTimeout(start,0); else window.addEventListener("load",function(){ setTimeout(start,0); });
 })();
 </script>
 <script src="regulamin.js" defer></script>
