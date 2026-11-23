@@ -14,3 +14,10 @@ Zasady od Nachu. Stosuj w każdej sesji.
 - Do nikogo niczego nie wysyłaj.
 - Wątpliwość: wybierz rozsądny wariant, zapisz założenie, idź dalej. Zatrzymaj się tylko przy czymś nie do cofnięcia.
 - Kończ raportem: co zrobione · jak to sprawdzić w 2 minuty · decyzje dla mnie.
+
+## Pułapki w tym repo
+
+- FAQ na stronie jest powielone w bloku JSON-LD `FAQPage` w `<head>`. Zmiana pytania lub odpowiedzi = ta sama zmiana w obu miejscach.
+- Zdjęcia: obok JPG leżą kopie WebP w `<picture>` (`picture{display:contents}`). Podmieniasz zdjęcie = podmień oba pliki.
+- Animacja wody (WebGL) startuje po `load`; na grafice programowej zostaje jedna klatka. Lighthouse w chmurze to grafika programowa, więc nie pokaże animacji.
+- Nie psuj: `pomiar.js` (zdarzenia GoatCounter), `regulamin.js` (okno przed kalendarzem), przycisk „Kto będzie pływał?”.
