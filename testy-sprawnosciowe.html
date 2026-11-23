@@ -645,6 +645,7 @@ footer a:hover{color:var(--deep-fg)}
 .svc-foot{margin-top:28px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 32px;align-items:center;padding:20px 24px;border-radius:8px;background:var(--bg-2);border:1px solid var(--line)}
 .svc-foot p{color:var(--muted);font-size:.93rem}
 .svc-foot p b{color:var(--fg)}
+.svc-calc{display:inline-block;margin-top:14px;font-weight:600}
 .src{margin-top:16px;font-size:.8rem;line-height:1.5;color:var(--muted);max-width:60em}
 /* drogi do straży */
 .routes-wrap{margin-top:44px;scroll-margin-top:90px}
@@ -757,6 +758,46 @@ footer a:hover{color:var(--deep-fg)}
 .path li::before{left:5px;top:.28em;width:4px;height:.95em;border-radius:2px;background:var(--pole);box-shadow:0 0 0 1px color-mix(in srgb,var(--fg) 25%,transparent)}
 .path li::after{content:"";position:absolute;left:1px;top:1.18em;width:12px;height:4px;border-radius:50%;background:var(--fg);opacity:.75}
 .swim-facts{border-top-color:var(--fg)}
+
+/* ---------- kalkulator PSP ---------- */
+.calc-sec{background:var(--bg-2);border-block:1px solid var(--line)}
+.pc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 48px;align-items:start}
+.pc-form{display:grid;gap:22px}
+.pc-form fieldset{border:0;margin:0;padding:0;min-width:0}
+.pc-form legend,.pc-f>span{display:block;font-weight:600;margin-bottom:8px}
+.pc-seg{display:flex;flex-wrap:wrap;gap:8px}
+.pc-seg label{position:relative}
+.pc-seg input{position:absolute;opacity:0;inset:0;margin:0}
+.pc-seg span{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--bg);font-size:.95rem;cursor:pointer;line-height:1.2}
+.pc-seg input:checked+span{border-color:var(--brand-blue);background:var(--brand-navy);color:#fff}
+.pc-seg input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.pc-f{display:block}
+.pc-f small{display:block;color:var(--muted);font-size:.82rem;margin-top:6px}
+.pc-in{display:flex;gap:10px;align-items:center}
+.pc-in input{width:100%;max-width:9em;min-height:48px;padding:10px 14px;font:inherit;font-size:1.1rem;color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:8px}
+.pc-in input:focus{outline:3px solid var(--accent);outline-offset:1px;border-color:transparent}
+.pc-in em{font-style:normal;color:var(--muted)}
+.pc-chk{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--muted)}
+.pc-chk input{width:20px;height:20px;margin-top:2px;flex:none}
+.pc-go{justify-self:start}
+.pc-out{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:24px}
+.pc-empty{color:var(--muted)}
+.pc-res{display:grid;gap:4px;padding:14px 16px;border-radius:8px;margin-bottom:16px}
+.pc-res b{font-family:var(--display);font-stretch:80%;font-variation-settings:"wdth" 80;font-weight:800;text-transform:uppercase;font-size:1.5rem;line-height:1.1}
+.pc-res.ok{background:var(--ok-bg)}.pc-res.ok b{color:var(--ok)}
+.pc-res.no{background:var(--no-bg)}.pc-res.no b{color:var(--no)}
+.pc-rows{list-style:none;margin:0;padding:0}
+.pc-rows li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.pc-n small,.pc-p small{display:block;color:var(--muted);font-size:.85rem}
+.pc-p{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pc-ok{color:var(--ok);font-weight:700}.pc-no{color:var(--no);font-weight:700}
+.pc-tip{margin-top:14px;font-size:.95rem}
+.pc-opts{margin:6px 0 0;padding-left:20px;font-size:.95rem}
+.pc-warn{color:var(--no);font-weight:600}
+.pc-cta{margin-top:20px;width:100%}
+.pc-src{margin-top:14px;font-size:.8rem;line-height:1.5;color:var(--muted)}
+@media (max-width:860px){.pc{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.pc-out{padding:18px}}
 </style>
 </head>
 <body>
@@ -818,6 +859,7 @@ footer a:hover{color:var(--deep-fg)}
             <li class="extra"><span>Pływanie 50&nbsp;m stylem dowolnym<small>W naborze do służby maks. 60&nbsp;s, gdy przewiduje je ogłoszenie. W szkołach aspirantów i Akademii Pożarniczej maks. 90&nbsp;s i obowiązkowo</small></span></li>
           </ol>
           <p class="svc-note"><b>Kobiety:</b> na stanowiska w jednostkach ratowniczo-gaśniczych też się podciągają, na pozostałe zamiast podciągania jest rzut piłką lekarską 2&nbsp;kg. Progi punktowe i limit na basenie zależą od drogi do służby: <a href="#straz-drogi">porównanie niżej</a>.</p>
+          <a class="svc-calc" href="#kalkulator">Policz swoje punkty →</a>
         </article>
         <article class="svc-card pol">
           <figure class="svc-photo"><img src="img/testy-stojaki.jpg" alt="Pomarańczowe stojaki rozstawione na boisku do biegu ze zmianą kierunku" width="960" height="540" loading="lazy"><figcaption>Bieg ze stojakami</figcaption></figure>
@@ -899,6 +941,56 @@ footer a:hover{color:var(--deep-fg)}
         <a class="btn btn-navy btn-sm" href="tel:+48691325011">691 325 011</a>
       </div>
       <p class="src">Stan przepisów: listopad 2026. Nabór do służby w PSP: rozporządzenie MSWiA z 23 września 2021 r. w sprawie postępowania kwalifikacyjnego o przyjęcie do służby w PSP (Dz.U. 2021 poz. 1772 ze zm.), zmienione rozporządzeniem z 28 października 2026 r. (Dz.U. 2026 poz. 1459, obowiązuje od 20 listopada 2026 r.; nabory wszczęte wcześniej prowadzi się na starych zasadach). Szkoły aspirantów PSP: proces naboru na rok szkolny 2026/2027 z 28 stycznia 2026 r. Akademia Pożarnicza: uchwała Senatu nr 26/06/2026 z 19 czerwca 2026 r. (rekrutacja 2027/2028). Policja: rozporządzenie MSWiA z 14 lutego 2025 r. (Dz.U. 2025 poz. 248). Wojsko: zarządzenie nr 6/MON z 3 marca 2026 r. w sprawie rekrutacji na uczelnie wojskowe. Przepisy i ogłoszenia się zmieniają, dlatego zawsze sprawdzamy aktualne ogłoszenie o naborze.</p>
+    </div>
+  </section>
+
+  <section class="sec calc-sec" id="kalkulator">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Kalkulator</p>
+        <h2 class="cond">Czy zdam test do PSP?</h2>
+        <p>Wpisz swoje wyniki. Kalkulator przeliczy je na punkty z tabeli z rozporządzenia i pokaże, ile brakuje. Liczy się w Twoim telefonie, nic nie wysyłamy i nic nie zapisujemy.</p>
+      </div>
+      <div class="pc">
+        <form class="pc-form" id="psp-calc" novalidate>
+          <fieldset>
+            <legend>Dokąd idziesz?</legend>
+            <div class="pc-seg">
+              <label><input type="radio" name="tryb" value="sluzba" checked><span>Nabór do służby</span></label>
+              <label><input type="radio" name="tryb" value="szkola"><span>Szkoła aspirantów PSP</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Płeć</legend>
+            <div class="pc-seg">
+              <label><input type="radio" name="plec" value="m" checked><span>Mężczyzna</span></label>
+              <label><input type="radio" name="plec" value="k"><span>Kobieta</span></label>
+            </div>
+          </fieldset>
+          <fieldset id="psp-stan" hidden>
+            <legend>Stanowisko z ogłoszenia</legend>
+            <div class="pc-seg">
+              <label><input type="radio" name="stan" value="jrg" checked><span>Ratowniczo-gaśnicze</span></label>
+              <label><input type="radio" name="stan" value="inne"><span>Inne</span></label>
+            </div>
+          </fieldset>
+          <label class="pc-f" id="f-pod"><span>Podciąganie na drążku</span><span class="pc-in"><input name="pod" type="number" inputmode="numeric" min="0" max="60" step="1" placeholder="np. 11"><em>powtórzeń</em></span></label>
+          <label class="pc-f" id="f-rzut" hidden><span>Rzut piłką lekarską 2&nbsp;kg</span><span class="pc-in"><input name="rzut" type="text" inputmode="decimal" placeholder="np. 7,50"><em>metrów</em></span></label>
+          <label class="pc-f"><span>Bieg po kopercie</span><span class="pc-in"><input name="kop" type="text" inputmode="decimal" placeholder="np. 23,40"><em>sekund</em></span></label>
+          <fieldset>
+            <legend>Beep test</legend>
+            <div class="pc-in"><input name="bpoz" type="number" inputmode="numeric" min="1" max="21" step="1" placeholder="poziom" aria-label="Beep test: poziom"><em>–</em><input name="bodc" type="number" inputmode="numeric" min="1" max="16" step="1" placeholder="odcinek" aria-label="Beep test: odcinek"></div>
+          </fieldset>
+          <label class="pc-f"><span>Pływanie 50&nbsp;m (jeśli jest w Twoim naborze)</span><span class="pc-in"><input name="swim" type="text" inputmode="decimal" placeholder="np. 58"><em>sekund</em></span><small>Limit: <span id="psp-swim-lim">60</span>&nbsp;s. Nie wliczamy do punktów, to osobny sprawdzian.</small></label>
+          <label class="pc-chk" id="psp-stare"><input type="checkbox" id="psp-old"><span>Mój nabór ruszył przed 20 listopada 2026. Wtedy obowiązują stare progi: 50/46&nbsp;pkt i 90&nbsp;s na pływanie.</span></label>
+          <button class="btn btn-navy pc-go" type="submit">Policz</button>
+        </form>
+        <div class="pc-out" aria-live="polite">
+          <div id="psp-out" hidden></div>
+          <p class="pc-empty" id="psp-empty">Wpisz wyniki i kliknij „Policz”. Zobaczysz punkty za każdą próbę i ile brakuje do progu.</p>
+        </div>
+      </div>
+      <p class="src">Normy sprawdzone: <span data-normy-data>23.11.2026</span>. Tabela punktowa: załącznik nr 5 do rozporządzenia MSWiA z 27 października 2005 r. (tekst jednolity Dz.U. 2023 poz. 1177), bez punktów za wiek. Nabór do służby: rozporządzenie MSWiA z 23 września 2021 r. (Dz.U. 2021 poz. 1772) ze zmianą od 20 listopada 2026 r. (Dz.U. 2026 poz. 1459): próg średniej 45&nbsp;pkt dla mężczyzn i 41&nbsp;pkt dla kobiet, pływanie 50&nbsp;m do 60&nbsp;s. Szkoły aspirantów PSP: zasady naboru na rok 2026/2027 (progi 50 i 46&nbsp;pkt, pływanie do 90&nbsp;s). Zasady na 2027/2028 jeszcze nie są ogłoszone. Wynik jest orientacyjny. Liczy się pomiar komisji i Twoje ogłoszenie.</p>
     </div>
   </section>
 
@@ -1161,6 +1253,7 @@ footer a:hover{color:var(--deep-fg)}
 })();
 </script>
 <script src="regulamin.js" defer></script>
+<script src="kalkulator-psp.js" defer></script>
 <script src="pomiar.js" defer></script>
 </body>
 </html>
