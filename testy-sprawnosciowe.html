@@ -588,6 +588,25 @@ footer a:hover{color:var(--deep-fg)}
 .svc-foot p{color:var(--muted);font-size:.93rem}
 .svc-foot p b{color:var(--fg)}
 .src{margin-top:16px;font-size:.8rem;line-height:1.5;color:var(--muted);max-width:60em}
+/* drogi do straży */
+.routes-wrap{margin-top:44px;scroll-margin-top:90px}
+.routes-head{max-width:46em}
+.routes-head h3{font-size:clamp(1.9rem,3.2vw,2.5rem);line-height:.95;margin:6px 0 10px}
+.routes-head p:last-child{color:var(--muted)}
+.routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:22px}
+.route{display:flex;flex-direction:column;gap:12px;padding:24px 22px;border:1px solid var(--line);border-top:4px solid var(--psp);border-radius:8px;background:var(--bg);min-width:0}
+.route .tag{align-self:flex-start;margin-left:0;font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:999px;border:1.5px solid var(--psp);background:color-mix(in srgb,var(--psp) 10%,transparent);color:var(--fg)}
+.route h4{margin:0;font-size:1.6rem;line-height:.95}
+.route-who{color:var(--muted);font-size:.93rem;line-height:1.5;margin:0}
+.route dl{margin:0;border-top:1px solid var(--line)}
+.route dl div{padding:11px 0;border-bottom:1px solid var(--line)}
+.route dt{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.route dd{margin:4px 0 0;font-weight:600;line-height:1.4}
+.route dd small{display:block;margin-top:3px;font-weight:400;font-size:.88rem;color:var(--muted)}
+.routes-note{margin-top:18px;font-size:.93rem;line-height:1.5;color:var(--muted);padding:14px 18px;border-left:4px solid var(--psp);background:var(--bg-2);border-radius:0 8px 8px 0}
+.routes-note b{color:var(--fg)}
+@media (max-width:980px){.routes{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:460px){.route{padding:20px 18px}}
 @media (max-width:980px){.svc{grid-template-columns:minmax(0,1fr)}.svc-foot{grid-template-columns:minmax(0,1fr)}.svc-foot .btn{justify-self:start}}
 @media (max-width:460px){.svc-card{padding:22px 18px 20px}}
 .svc-card{overflow:hidden}
@@ -738,9 +757,9 @@ footer a:hover{color:var(--deep-fg)}
             <li><span>Podciąganie na drążku</span></li>
             <li><span>Bieg po kopercie<small>Slalom między tyczkami ustawionymi w kształt koperty, na czas</small></span></li>
             <li><span>Beep test<small>Bieg wahadłowy w tempie sygnałów dźwiękowych, coraz szybszym</small></span></li>
-            <li class="extra"><span>Pływanie 50&nbsp;m stylem dowolnym<small>Maks. 90&nbsp;s. Obowiązkowe w szkołach PSP, w naborach do jednostek wtedy, gdy przewiduje je ogłoszenie</small></span></li>
+            <li class="extra"><span>Pływanie 50&nbsp;m stylem dowolnym<small>W naborze do służby maks. 60&nbsp;s, gdy przewiduje je ogłoszenie. W szkołach aspirantów i Akademii Pożarniczej maks. 90&nbsp;s i obowiązkowo</small></span></li>
           </ol>
-          <p class="svc-note"><b>Kobiety:</b> na stanowiska w jednostkach ratowniczo-gaśniczych też się podciągają, na pozostałe zamiast podciągania jest rzut piłką lekarską 2&nbsp;kg.</p>
+          <p class="svc-note"><b>Kobiety:</b> na stanowiska w jednostkach ratowniczo-gaśniczych też się podciągają, na pozostałe zamiast podciągania jest rzut piłką lekarską 2&nbsp;kg. Progi punktowe i limit na basenie zależą od drogi do służby: <a href="#straz-drogi">porównanie niżej</a>.</p>
         </article>
         <article class="svc-card pol">
           <figure class="svc-photo"><img src="img/testy-stojaki.jpg" alt="Pomarańczowe stojaki rozstawione na boisku do biegu ze zmianą kierunku" width="960" height="540" loading="lazy"><figcaption>Bieg ze stojakami</figcaption></figure>
@@ -775,11 +794,53 @@ footer a:hover{color:var(--deep-fg)}
           <p class="svc-note">Tak wygląda sprawdzian w rekrutacji na uczelnie wojskowe w roku 2026/27. <b>Służba zawodowa?</b> Zakres testu podaje ogłoszenie, a my trenujemy dokładnie to, co w nim jest.</p>
         </article>
       </div>
+      <div class="routes-wrap" id="straz-drogi">
+        <div class="routes-head">
+          <p class="label">Straż: którędy idziesz</p>
+          <h3 class="cond">Nabór, szkoła aspirantów, Akademia</h3>
+          <p>Próby są te same, ale progi punktowe i limit na basenie zależą od drogi do służby. Stan na listopad 2026.</p>
+        </div>
+        <div class="routes">
+          <article class="route">
+            <span class="tag">Od 20.11.2026</span>
+            <h4 class="cond">Nabór do służby w PSP</h4>
+            <p class="route-who">Ogłasza go komenda PSP. Dla dorosłych, którzy chcą od razu wstąpić do służby („z ulicy”).</p>
+            <dl>
+              <div><dt>Próby</dt><dd>Drążek, koperta, beep test<small>Kobiety na stanowiska poza jednostkami ratowniczo-gaśniczymi: rzut piłką lekarską zamiast drążka</small></dd></div>
+              <div><dt>Zaliczenie testu</dt><dd>Każda próba zaliczona i średnio min. 45&nbsp;pkt (mężczyźni) albo 41&nbsp;pkt (kobiety)<small>Gdy test zaliczy mniej osób, niż jest miejsc, próg można obniżyć do 38&nbsp;pkt</small></dd></div>
+              <div><dt>Pływanie 50&nbsp;m dowolnym</dt><dd>Do 60&nbsp;s<small>Tylko gdy przewiduje je ogłoszenie o naborze</small></dd></div>
+              <div><dt>Premia za formę</dt><dd>Test na 61–70,99&nbsp;pkt: +5&nbsp;pkt, od 71&nbsp;pkt: +10&nbsp;pkt<small>Dolicza się do punktów za wykształcenie i uprawnienia</small></dd></div>
+            </dl>
+          </article>
+          <article class="route">
+            <span class="tag">Zasady z rekrutacji 2026/27</span>
+            <h4 class="cond">Szkoły aspirantów PSP</h4>
+            <p class="route-who">Kraków, Poznań, Częstochowa. Po maturze: nauka w zawodzie technik pożarnictwa w służbie kandydackiej.</p>
+            <dl>
+              <div><dt>Próby</dt><dd>Drążek, koperta, beep test<small>Te same dla kobiet i mężczyzn</small></dd></div>
+              <div><dt>Zaliczenie testu</dt><dd>Każda próba min. 1&nbsp;pkt i średnio min. 50&nbsp;pkt (mężczyźni) albo 46&nbsp;pkt (kobiety)</dd></div>
+              <div><dt>Pływanie 50&nbsp;m dowolnym</dt><dd>Do 90&nbsp;s, obowiązkowe<small>Zaliczone albo nie, bez punktów. Basen 25&nbsp;m, na nawrocie trzeba dotknąć ściany</small></dd></div>
+              <div><dt>Na 2027/28</dt><dd>Zasady ogłasza Komenda Główna PSP<small>Na rok 2026/27 ogłosiła je 28 stycznia 2026 r.</small></dd></div>
+            </dl>
+          </article>
+          <article class="route">
+            <span class="tag">Rekrutacja 2027/28</span>
+            <h4 class="cond">Akademia Pożarnicza</h4>
+            <p class="route-who">Dawniej SGSP, Warszawa. Po maturze: studia dla strażaków w służbie kandydackiej.</p>
+            <dl>
+              <div><dt>Próby</dt><dd>Drążek, koperta, beep test<small>Wymagania według tego samego rozporządzenia co nabór do służby w PSP</small></dd></div>
+              <div><dt>Pływanie 50&nbsp;m dowolnym</dt><dd>Do 90&nbsp;s, obowiązkowe<small>Start skokiem do wody, basen min. 1,8&nbsp;m głębokości. Tylko po zaliczeniu testu</small></dd></div>
+              <div><dt>O przyjęciu decyduje</dt><dd>Matura<small>Matematyka, język obcy oraz fizyka, chemia, informatyka albo biologia. Test i pływanie trzeba zaliczyć, ale ranking powstaje z punktów z matury</small></dd></div>
+            </dl>
+          </article>
+        </div>
+        <p class="routes-note"><b>Nabór ogłoszony przed 20.11.2026?</b> Kończy się na starych zasadach: średnio min. 50&nbsp;pkt (mężczyźni) albo 46&nbsp;pkt (kobiety) i pływanie do 90&nbsp;s.</p>
+      </div>
       <div class="svc-foot">
         <p><b>Inna formacja albo nie wiesz, czego się spodziewać?</b> Zadzwoń albo napisz SMS. Sprawdzę test z Twojego naboru i powiem, od czego zacząć.</p>
         <a class="btn btn-navy btn-sm" href="tel:+48691325011">691 325 011</a>
       </div>
-      <p class="src">Stan przepisów: październik 2026. Straż: rozporządzenie MSWiA z 23 września 2021 r. w sprawie postępowania kwalifikacyjnego o przyjęcie do służby w PSP (Dz.U. 2021 poz. 1772 ze zm.). Policja: rozporządzenie MSWiA z 14 lutego 2025 r. (Dz.U. 2025 poz. 248). Wojsko: zarządzenie nr 6/MON z 3 marca 2026 r. w sprawie rekrutacji na uczelnie wojskowe. Przepisy i ogłoszenia się zmieniają, dlatego zawsze sprawdzamy aktualne ogłoszenie o naborze.</p>
+      <p class="src">Stan przepisów: listopad 2026. Nabór do służby w PSP: rozporządzenie MSWiA z 23 września 2021 r. w sprawie postępowania kwalifikacyjnego o przyjęcie do służby w PSP (Dz.U. 2021 poz. 1772 ze zm.), zmienione rozporządzeniem z 28 października 2026 r. (Dz.U. 2026 poz. 1459, obowiązuje od 20 listopada 2026 r.; nabory wszczęte wcześniej prowadzi się na starych zasadach). Szkoły aspirantów PSP: proces naboru na rok szkolny 2026/2027 z 28 stycznia 2026 r. Akademia Pożarnicza: uchwała Senatu nr 26/06/2026 z 19 czerwca 2026 r. (rekrutacja 2027/2028). Policja: rozporządzenie MSWiA z 14 lutego 2025 r. (Dz.U. 2025 poz. 248). Wojsko: zarządzenie nr 6/MON z 3 marca 2026 r. w sprawie rekrutacji na uczelnie wojskowe. Przepisy i ogłoszenia się zmieniają, dlatego zawsze sprawdzamy aktualne ogłoszenie o naborze.</p>
     </div>
   </section>
 
@@ -844,7 +905,7 @@ footer a:hover{color:var(--deep-fg)}
       <div class="swim-copy">
         <p class="label">Pływanie</p>
         <h2 class="cond">50 metrów w wodzie to moja działka</h2>
-        <p class="big">Na teście do straży trzeba przepłynąć 50&nbsp;m w maks. 90&nbsp;sekund, a w szkołach PSP to warunek przyjęcia. Ląd i wodę robisz u mnie, bez szukania osobnego instruktora pływania.</p>
+        <p class="big">W naborze do służby w PSP, jeśli ogłoszenie przewiduje pływanie, 50&nbsp;m trzeba przepłynąć w 60&nbsp;sekund. W szkołach aspirantów i w Akademii Pożarniczej limit to 90&nbsp;sekund, a bez zaliczenia nie ma przyjęcia. Ląd i wodę robisz u mnie, bez szukania osobnego instruktora pływania.</p>
         <p>Pływanie przerabiamy tak jak resztę testu: diagnoza, technika, plan. Jeśli dziś płyniesz z trudem, zaczynamy od podstaw, a jeśli pływasz dobrze, szlifujemy start, nawrót i tempo.</p>
         <div class="swim-facts">
           <div><b>56,36&nbsp;s</b><span>moje 100&nbsp;m kraulem, brąz MP Służb Mundurowych 2025</span></div>
