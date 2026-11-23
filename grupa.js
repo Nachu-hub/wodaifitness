@@ -70,7 +70,7 @@
   function phone(v){
     var d=String(v||"").replace(/[\s\-().]/g,"");
     var m=d.match(/^(?:\+48|0048|48)?([2-9]\d{8})$/);
-    return m?"+48"+m[1]:null;
+    return m?"+48 "+m[1].replace(/(\d{3})(\d{3})(\d{3})/,"$1 $2 $3"):null; /* spacje: arkusz nie zamieni numeru w liczbę i nie utnie „+” */
   }
   function val(f,name){ var c=f.querySelector('input[name="'+name+'"]:checked'); return c?c.value:""; }
   function vals(f,name){ var a=[],c=f.querySelectorAll('input[name="'+name+'"]:checked'); for(var i=0;i<c.length;i++) a.push(c[i].value); return a; }
